@@ -38,19 +38,19 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);font-size:13px
 select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2364748B'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;}
 
 /* BUTTONS */
-.btn-p{padding:8px 16px;border-radius:7px;border:none;background:var(--c1);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);}
+.btn-p{padding:11px 18px;border-radius:9px;border:none;background:var(--c1);color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font);min-height:42px;}
 .btn-p:active{opacity:.85;}
-.btn-s{padding:6px 11px;border-radius:6px;border:1px solid var(--bd);background:rgba(255,255,255,.04);color:var(--tx);font-size:12px;cursor:pointer;font-family:var(--font);}
+.btn-s{padding:9px 14px;border-radius:8px;border:1px solid var(--bd);background:rgba(255,255,255,.04);color:var(--tx);font-size:14px;cursor:pointer;font-family:var(--font);min-height:40px;}
 .btn-s:active{background:rgba(255,255,255,.12);}
-.btn-r{padding:5px 10px;border-radius:6px;border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.08);color:#FCA5A5;font-size:11px;cursor:pointer;font-family:var(--font);}
+.btn-r{padding:9px 14px;border-radius:8px;border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.08);color:#FCA5A5;font-size:14px;cursor:pointer;font-family:var(--font);min-height:40px;}
 
 /* STAT BUTTONS */
-.sb{padding:5px 10px;border-radius:5px;border:1px solid var(--bd);background:rgba(255,255,255,.03);color:var(--tx);font-size:12px;cursor:pointer;font-family:var(--font);}
+.sb{padding:12px 14px;border-radius:10px;border:1px solid var(--bd);background:rgba(255,255,255,.03);color:var(--tx);font-size:15px;cursor:pointer;font-family:var(--font);min-height:48px;width:100%;text-align:left;font-weight:600;}
 .sb:active{border-color:var(--c1);background:rgba(249,115,22,.1);}
 .sb.ng{border-color:rgba(239,68,68,.3);color:#FCA5A5;}
 .sb.play{border-color:rgba(96,165,250,.4);color:var(--play);}
 .sb.fin{border-color:rgba(251,146,60,.4);color:var(--fin);}
-.sb-row{display:flex;flex-wrap:wrap;gap:3px;}
+.sb-row{display:grid;grid-template-columns:1fr;gap:8px;}
 .ss{margin-bottom:8px;}
 .ss-t{font-size:9px;font-weight:600;letter-spacing:1px;color:var(--mu);text-transform:uppercase;margin-bottom:4px;}
 
@@ -61,13 +61,13 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 .sn{font-size:46px;font-weight:700;line-height:1;}
 
 /* PLAYER GRID */
-.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:5px;}
-.pc{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:7px;padding:6px 8px;cursor:pointer;position:relative;}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:8px;}
+.pc{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:10px;padding:10px 10px 8px;cursor:pointer;position:relative;min-height:88px;display:flex;flex-direction:column;justify-content:flex-end;}
 .pc.sel{border-color:var(--c1);background:rgba(249,115,22,.1);}
-.pc.onc{border-bottom:2.5px solid var(--g);}
-.pc-d{font-size:9px;color:var(--mu);}
-.pc-n{font-size:11px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:1px 0;}
-.oc-btn{position:absolute;top:4px;right:4px;padding:1px 5px;border-radius:3px;border:none;font-size:9px;font-weight:600;cursor:pointer;font-family:var(--font);}
+.pc.onc{border-bottom:3px solid var(--g);}
+.pc-num{font-size:24px;line-height:1;font-weight:900;color:#F8FAFC;letter-spacing:.5px;text-shadow:0 1px 0 rgba(0,0,0,.35),0 0 10px rgba(249,115,22,.18);margin-bottom:4px;}
+.pc-n{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:1px 0;color:var(--tx);padding-right:40px;}
+.oc-btn{position:absolute;top:7px;right:7px;padding:3px 7px;border-radius:5px;border:none;font-size:10px;font-weight:700;cursor:pointer;font-family:var(--font);}
 .oc-in{background:rgba(34,197,94,.15);color:#86EFAC;}
 .oc-out{background:rgba(100,116,139,.15);color:var(--mu);}
 
@@ -79,6 +79,24 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 .st td:first-child{text-align:left;font-weight:500;}
 .st tr.tot td{border-top:1px solid var(--bd);font-weight:600;background:rgba(249,115,22,.04);}
 .scroll-x{overflow-x:auto;}
+
+
+.live-court-actions{display:grid;grid-template-columns:minmax(210px,1fr) minmax(0,640px) minmax(210px,1fr);gap:14px;align-items:start;}
+.action-col{display:flex;flex-direction:column;gap:10px;}
+.action-box{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:12px;padding:10px;}
+.action-box .ss{margin-bottom:0;}
+.court-wrap{display:flex;flex-direction:column;gap:8px;}
+.live-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.live-player-tag{font-size:14px;font-weight:700;color:var(--mu);padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--bd);}
+.live-player-tag strong{color:var(--c1);}
+.court-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+.court-team-buttons{display:flex;gap:6px;flex-wrap:wrap;}
+@media (max-width: 980px){
+  .live-court-actions{grid-template-columns:1fr;}
+  .action-col{order:2;}
+  .court-wrap{order:1;}
+  .action-box .ss-t{font-size:10px;}
+}
 
 /* ACTION LOG */
 .le{display:flex;align-items:center;gap:4px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:11px;}
@@ -321,58 +339,128 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
     </div>
   </div>
 
-  <!-- Court -->
+  <!-- Court + actions -->
   <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-      <div class="ct" style="margin:0">Pista FIBA — toca para marcar posición</div>
-      <div style="display:flex;gap:4px">
-        <button class="btn-s" style="font-size:10px;padding:2px 8px;color:var(--c1)" id="tbA" onclick="setTeam('A')">EQ A</button>
-        <button class="btn-s" style="font-size:10px;padding:2px 8px" id="tbB" onclick="setTeam('B')">EQ B</button>
-      </div>
+    <div class="live-head">
+      <div class="ct" style="margin:0">Registro en directo</div>
+      <div class="live-player-tag">Jugador activo: <strong id="spl">selecciona jugador</strong></div>
     </div>
-    <svg id="cv-live" viewBox="0 0 340 310" style="width:100%;cursor:crosshair;border-radius:8px;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))" onclick="cClick(event)">
-      <defs>
-        <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CA8A3C"/><stop offset="45%" stop-color="#B8722A"/><stop offset="100%" stop-color="#A86018"/></linearGradient>
-        <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B4F14" stop-opacity="0.6"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.8"/></linearGradient>
-        <linearGradient id="sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.07)"/><stop offset="50%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,0.07)"/></linearGradient>
-        <radialGradient id="hg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FACC15" stop-opacity="0.45"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/></radialGradient>
-        <pattern id="pk" x="0" y="0" width="340" height="5.5" patternUnits="userSpaceOnUse"><line x1="0" y1="5" x2="340" y2="5" stroke="rgba(0,0,0,0.065)" stroke-width="0.8"/></pattern>
-        <clipPath id="cc"><rect x="0" y="0" width="340" height="310" rx="8"/></clipPath>
-      </defs>
-      <rect width="340" height="310" rx="8" fill="url(#wg)"/>
-      <rect width="340" height="310" rx="8" fill="url(#pk)"/>
-      <rect width="340" height="310" rx="8" fill="url(#sh)"/>
-      <rect x="114" y="178" width="112" height="126" fill="url(#lg)" clip-path="url(#cc)"/>
-      <rect x="114" y="178" width="112" height="126" fill="url(#pk)" opacity="0.6" clip-path="url(#cc)"/>
-      <g stroke="rgba(255,255,255,0.82)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="4" y="4" width="332" height="302" rx="7" stroke-width="2"/>
-        <path d="M130,4 A40,40 0 0,0 210,4" stroke-width="1.5"/>
-        <line x1="24" y1="304" x2="24" y2="252" stroke-width="1.5"/>
-        <line x1="316" y1="304" x2="316" y2="252" stroke-width="1.5"/>
-        <path d="M24,252 A147,147 0 0,1 316,252" stroke-width="1.5"/>
-        <rect x="114" y="178" width="112" height="126" stroke-width="1.5"/>
-        <path d="M131,178 A39,39 0 0,1 209,178" stroke-width="1.5"/>
-        <path d="M131,178 A39,39 0 0,0 209,178" stroke-width="1.5" stroke-dasharray="5,4"/>
-        <path d="M143,269 A27,27 0 0,1 197,269" stroke-width="1.5"/>
-        <line x1="114" y1="228" x2="123" y2="228" stroke-width="1.5"/>
-        <line x1="114" y1="248" x2="123" y2="248" stroke-width="1.5"/>
-        <line x1="226" y1="228" x2="217" y2="228" stroke-width="1.5"/>
-        <line x1="226" y1="248" x2="217" y2="248" stroke-width="1.5"/>
-        <line x1="152" y1="290" x2="188" y2="290" stroke-width="2.5"/>
-      </g>
-      <circle cx="170" cy="269" r="20" fill="url(#hg)"/>
-      <circle cx="170" cy="269" r="8" fill="none" stroke="#FACC15" stroke-width="2.2" opacity="0.9"/>
-      <circle cx="170" cy="269" r="2.5" fill="#FACC15" opacity="0.65"/>
-      <text x="170" y="138" text-anchor="middle" fill="rgba(255,255,255,0.09)" font-size="9" letter-spacing="2">3 PUNTOS</text>
-      <text x="170" y="218" text-anchor="middle" fill="rgba(255,255,255,0.09)" font-size="8">MID RANGE</text>
-      <text x="170" y="256" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-size="8">PINTURA</text>
-      <g id="ldots"></g>
-      <circle id="cur1" cx="-99" cy="-99" r="9" fill="rgba(249,115,22,0.3)" stroke="white" stroke-width="1.5" style="pointer-events:none"/>
-      <circle id="cur2" cx="-99" cy="-99" r="3" fill="white" style="pointer-events:none"/>
-    </svg>
-    <div style="display:flex;align-items:center;gap:7px;margin-top:5px">
-      <span id="poslbl" style="font-size:10px;color:var(--mu)">Sin posición</span>
-      <button class="btn-s" style="font-size:10px;padding:2px 7px" onclick="clearPos()">Limpiar</button>
+    <div class="live-court-actions">
+      <div class="action-col">
+        <div class="action-box">
+          <div class="ss">
+            <div class="ss-t">Tiro</div>
+            <div class="sb-row">
+              <button class="sb" onclick="rs('T2+')">+2 ✓</button>
+              <button class="sb ng" onclick="rs('T2-')">T2 ✗</button>
+              <button class="sb" onclick="rs('T3+')">+3 ✓</button>
+              <button class="sb ng" onclick="rs('T3-')">T3 ✗</button>
+              <button class="sb" onclick="rs('TL+')">+1 TL</button>
+              <button class="sb ng" onclick="rs('TL-')">TL ✗</button>
+            </div>
+          </div>
+        </div>
+        <div class="action-box">
+          <div class="ss">
+            <div class="ss-t">Rebote / Defensa</div>
+            <div class="sb-row">
+              <button class="sb" onclick="rs('RO')">Reb. Ofensivo</button>
+              <button class="sb" onclick="rs('RD')">Reb. Defensivo</button>
+              <button class="sb" onclick="rs('ROB')">Robo</button>
+              <button class="sb" onclick="rs('TAP')">Tapón</button>
+              <button class="sb ng" onclick="rs('FAV')">Falta</button>
+              <button class="sb ng" onclick="rs('PER')">Pérdida</button>
+              <button class="sb" onclick="rs('AST')">Asistencia</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="court-wrap">
+        <div class="court-toolbar">
+          <div class="ct" style="margin:0">Pista FIBA completa, toca para marcar posición</div>
+          <div class="court-team-buttons">
+            <button class="btn-s" style="font-size:14px;padding:9px 16px;color:var(--c1)" id="tbA" onclick="setTeam('A')">EQ A</button>
+            <button class="btn-s" style="font-size:14px;padding:9px 16px" id="tbB" onclick="setTeam('B')">EQ B</button>
+          </div>
+        </div>
+        <svg id="cv-live" viewBox="0 0 620 300" style="width:100%;max-width:600px;margin:0 auto;cursor:crosshair;border-radius:10px;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))" onclick="cClick(event)">
+          <defs>
+            <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CA8A3C"/><stop offset="45%" stop-color="#B8722A"/><stop offset="100%" stop-color="#A86018"/></linearGradient>
+            <linearGradient id="lgL" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8B4F14" stop-opacity="0.82"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.52"/></linearGradient>
+            <linearGradient id="lgR" x1="1" y1="0" x2="0" y2="0"><stop offset="0%" stop-color="#8B4F14" stop-opacity="0.82"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.52"/></linearGradient>
+            <linearGradient id="sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.07)"/><stop offset="50%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,0.07)"/></linearGradient>
+            <radialGradient id="hgL" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FACC15" stop-opacity="0.42"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/></radialGradient>
+            <radialGradient id="hgR" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FACC15" stop-opacity="0.42"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/></radialGradient>
+            <pattern id="pk" x="0" y="0" width="620" height="5.5" patternUnits="userSpaceOnUse"><line x1="0" y1="5" x2="620" y2="5" stroke="rgba(0,0,0,0.065)" stroke-width="0.8"/></pattern>
+          </defs>
+          <rect width="620" height="300" rx="10" fill="url(#wg)"/>
+          <rect width="620" height="300" rx="10" fill="url(#pk)"/>
+          <rect width="620" height="300" rx="10" fill="url(#sh)"/>
+          <rect x="4" y="86" width="64" height="128" fill="url(#lgL)"/>
+          <rect x="552" y="86" width="64" height="128" fill="url(#lgR)"/>
+          <g stroke="rgba(255,255,255,0.82)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="612" height="292" rx="9" stroke-width="2"/>
+            <line x1="310" y1="4" x2="310" y2="296" stroke-width="2"/>
+            <circle cx="310" cy="150" r="38" stroke-width="2"/>
+            <circle cx="310" cy="150" r="3" fill="rgba(255,255,255,0.82)" stroke="none"/>
+            <rect x="4" y="86" width="64" height="128" stroke-width="1.5"/>
+            <rect x="4" y="115" width="27" height="70" stroke-width="1.5"/>
+            <path d="M68,86 A135,135 0 0,1 68,214" stroke-width="1.5"/>
+            <line x1="4" y1="22" x2="68" y2="22" stroke-width="1.5"/>
+            <line x1="4" y1="278" x2="68" y2="278" stroke-width="1.5"/>
+            <path d="M68,22 A135,135 0 0,1 68,278" stroke-width="1.5"/>
+            <line x1="4" y1="133" x2="4" y2="167" stroke-width="4.5"/>
+            <circle cx="35" cy="150" r="9" stroke-width="2" stroke="rgba(255,215,0,0.9)"/>
+            <rect x="552" y="86" width="64" height="128" stroke-width="1.5"/>
+            <rect x="589" y="115" width="27" height="70" stroke-width="1.5"/>
+            <path d="M552,86 A135,135 0 0,0 552,214" stroke-width="1.5"/>
+            <line x1="552" y1="22" x2="616" y2="22" stroke-width="1.5"/>
+            <line x1="552" y1="278" x2="616" y2="278" stroke-width="1.5"/>
+            <path d="M552,22 A135,135 0 0,0 552,278" stroke-width="1.5"/>
+            <line x1="616" y1="133" x2="616" y2="167" stroke-width="4.5"/>
+            <circle cx="585" cy="150" r="9" stroke-width="2" stroke="rgba(255,215,0,0.9)"/>
+          </g>
+          <circle cx="35" cy="150" r="20" fill="url(#hgL)"/>
+          <circle cx="585" cy="150" r="20" fill="url(#hgR)"/>
+          <text x="52" y="148" text-anchor="middle" fill="rgba(255,255,255,0.09)" font-size="7">PINTURA</text>
+          <text x="568" y="148" text-anchor="middle" fill="rgba(255,255,255,0.09)" font-size="7">PINTURA</text>
+          <text x="190" y="148" text-anchor="middle" fill="rgba(255,255,255,0.07)" font-size="7">MID</text>
+          <text x="430" y="148" text-anchor="middle" fill="rgba(255,255,255,0.07)" font-size="7">MID</text>
+          <text x="62" y="18" text-anchor="middle" fill="rgba(249,115,22,0.55)" font-size="8" font-weight="700" id="court-label-A">MI EQUIPO</text>
+          <text x="558" y="18" text-anchor="middle" fill="rgba(147,197,253,0.55)" font-size="8" font-weight="700" id="court-label-B">RIVAL</text>
+          <g id="ldots"></g>
+          <circle id="cur1" cx="-99" cy="-99" r="10" fill="rgba(249,115,22,0.3)" stroke="white" stroke-width="1.7" style="pointer-events:none"/>
+          <circle id="cur2" cx="-99" cy="-99" r="4" fill="white" style="pointer-events:none"/>
+        </svg>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <span id="poslbl" style="font-size:13px;color:var(--mu)">Sin posición</span>
+          <button class="btn-s" style="font-size:13px;padding:8px 14px" onclick="clearPos()">Limpiar</button>
+        </div>
+      </div>
+      <div class="action-col">
+        <div class="action-box">
+          <div class="ss">
+            <div class="ss-t" style="color:var(--play);letter-spacing:1.5px">PLAYMAKING</div>
+            <div class="sb-row">
+              <button class="sb play" onclick="rs('PT')">PAINT TOUCH</button>
+              <button class="sb play" onclick="rs('PT8')">PT &gt;8"</button>
+              <button class="sb play" onclick="rs('DHO')">DHO</button>
+              <button class="sb play" onclick="rs('STA')">STAMPEDE</button>
+              <button class="sb play" onclick="rs('INV')">INVERSIÓN</button>
+            </div>
+          </div>
+        </div>
+        <div class="action-box">
+          <div class="ss">
+            <div class="ss-t" style="color:var(--fin);letter-spacing:1.5px">FINISHING</div>
+            <div class="sb-row">
+              <button class="sb fin" onclick="rs('LAR')">LAROCHE</button>
+              <button class="sb fin" onclick="rs('EPT')">EXTRAPASS+TIRO</button>
+              <button class="sb fin" onclick="rs('RPT')">REEMPLAZO+TIRO</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -381,7 +469,7 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
     <div class="ct">Jugadores — <span id="pal" style="color:var(--c1)">Mi Equipo</span></div>
     <div class="pg" id="pgrid"></div>
     <div id="nopl" class="empty" style="display:none">Inicia un partido desde Inicio</div>
-    <div style="font-size:9px;color:var(--mu);margin-top:5px">Tap = seleccionar · EN/FU = en pista</div>
+    <div style="font-size:10px;color:var(--mu);margin-top:6px">Tap = seleccionar · EN/FU = en pista</div>
   </div>
 
   <!-- Shot detail panel (inline, not fixed) -->
@@ -404,52 +492,6 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
     <div style="display:flex;gap:6px">
       <button class="btn-p" onclick="saveDetail()">Guardar detalle</button>
       <button class="btn-s" onclick="closeDetail()">Cerrar</button>
-    </div>
-  </div>
-
-  <!-- Stat buttons -->
-  <div class="card">
-    <div class="ct">Registrar — <span id="spl" style="color:var(--mu)">selecciona jugador</span></div>
-    <div class="ss">
-      <div class="ss-t">Tiro</div>
-      <div class="sb-row">
-        <button class="sb" onclick="rs('T2+')">+2 ✓</button>
-        <button class="sb ng" onclick="rs('T2-')">T2 ✗</button>
-        <button class="sb" onclick="rs('T3+')">+3 ✓</button>
-        <button class="sb ng" onclick="rs('T3-')">T3 ✗</button>
-        <button class="sb" onclick="rs('TL+')">+1 TL</button>
-        <button class="sb ng" onclick="rs('TL-')">TL ✗</button>
-      </div>
-    </div>
-    <div class="ss">
-      <div class="ss-t">Rebote / Defensa</div>
-      <div class="sb-row">
-        <button class="sb" onclick="rs('RO')">Reb. Ofensivo</button>
-        <button class="sb" onclick="rs('RD')">Reb. Defensivo</button>
-        <button class="sb" onclick="rs('ROB')">Robo</button>
-        <button class="sb" onclick="rs('TAP')">Tapón</button>
-        <button class="sb ng" onclick="rs('FAV')">Falta</button>
-        <button class="sb ng" onclick="rs('PER')">Pérdida</button>
-        <button class="sb" onclick="rs('AST')">Asistencia</button>
-      </div>
-    </div>
-    <div class="ss">
-      <div class="ss-t" style="color:var(--play);letter-spacing:1.5px">⬡ PLAYMAKING</div>
-      <div class="sb-row">
-        <button class="sb play" onclick="rs('PT')">PAINT TOUCH</button>
-        <button class="sb play" onclick="rs('PT8')">PT &gt;8"</button>
-        <button class="sb play" onclick="rs('DHO')">DHO</button>
-        <button class="sb play" onclick="rs('STA')">STAMPEDE</button>
-        <button class="sb play" onclick="rs('INV')">INVERSIÓN</button>
-      </div>
-    </div>
-    <div class="ss">
-      <div class="ss-t" style="color:var(--fin);letter-spacing:1.5px">⬡ FINISHING</div>
-      <div class="sb-row">
-        <button class="sb fin" onclick="rs('LAR')">LAROCHE</button>
-        <button class="sb fin" onclick="rs('EPT')">EXTRAPASS+TIRO</button>
-        <button class="sb fin" onclick="rs('RPT')">REEMPLAZO+TIRO</button>
-      </div>
     </div>
   </div>
 
@@ -735,26 +777,12 @@ var scFV = 'all', scQV = 0;
 // NAVIGATION
 // ════════════════════════════════════════════════════════════
 function sv(v, btn) {
-  var target = document.getElementById('v-'+v);
-  if(!target){
-    console.warn('Vista no encontrada:', v);
-    return;
-  }
-  document.querySelectorAll('.view').forEach(function(e){e.classList.remove('on');});
-  document.querySelectorAll('.nb').forEach(function(e){e.classList.remove('on');});
-  target.classList.add('on');
+  document.querySelectorAll('.view').forEach(function(e){ e.classList.remove('on'); });
+  document.querySelectorAll('.nb').forEach(function(e){ e.classList.remove('on'); });
+  document.getElementById('v-'+v).classList.add('on');
   if(btn) btn.classList.add('on');
-  if(v==='home') rHome();
-  else if(v==='live'){ if(typeof rLog==='function') rLog(); if(typeof rPlayers==='function') rPlayers(); if(typeof updateBonus==='function') updateBonus(); }
-  else if(v==='flow') rFlow();
-  else if(v==='chart'){scFV='all';scQV=0;rShoot();}
-  else if(v==='redes') rRedes();
-  else if(v==='jugador') rJugadorList();
-  else if(v==='ai'){ if(typeof rAI==='function') rAI(); }
-  else if(v==='inf') rInforme();
-  else if(v==='hist') rHistorial();
-  else if(v==='temp') rTemporada();
-  else if(v==='cfg') rCfg();
+  var fns = {flow:rFlow,chart:rChart,redes:rRedes,jugador:rJugadorList,inf:rInforme,temp:rTemp,hist:rHistorial,cfg:rCfg};
+  if(fns[v]) fns[v]();
   window.scrollTo(0,0);
 }
 function openModal(id){ document.getElementById(id).classList.add('open'); }
@@ -903,12 +931,13 @@ function seekVideo(t){ var v=document.getElementById('video-player'); if(v){v.cu
 // ════════════════════════════════════════════════════════════
 // COURT
 // ════════════════════════════════════════════════════════════
+var COURT_W=620, COURT_H=300;
 function cClick(e) {
   var svg=document.getElementById('cv-live');
   var pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
   var p=pt.matrixTransform(svg.getScreenCTM().inverse());
-  var nx=Math.max(0,Math.min(100,Math.round(p.x/340*100)));
-  var ny=Math.max(0,Math.min(100,Math.round(p.y/310*100)));
+  var nx=Math.max(0,Math.min(100,Math.round(p.x/COURT_W*100)));
+  var ny=Math.max(0,Math.min(100,Math.round(p.y/COURT_H*100)));
   S.courtPos={x:nx,y:ny};
   document.getElementById('cur1').setAttribute('cx',p.x);document.getElementById('cur1').setAttribute('cy',p.y);
   document.getElementById('cur2').setAttribute('cx',p.x);document.getElementById('cur2').setAttribute('cy',p.y);
@@ -921,13 +950,15 @@ function clearPos() {
   document.getElementById('poslbl').textContent='Sin posición';
 }
 function getZone(nx,ny) {
-  var x=nx/100*340, y=ny/100*310;
-  if(x>114&&x<226&&y>178) return 'paint';
-  if((x<24||x>316)&&y>252) return 'corner3';
-  var d=Math.sqrt((x-170)*(x-170)+(y-269)*(y-269));
-  return d>147 ? '3pt' : 'mid';
+  var x=nx/100*COURT_W, y=ny/100*COURT_H;
+  var leftHoop={x:35,y:150}, rightHoop={x:525,y:150};
+  if((x<79 && y>86 && y<214) || (x>481 && y>86 && y<214)) return 'paint';
+  if((x<79 && (y<22 || y>278)) || (x>481 && (y<22 || y>278))) return 'corner3';
+  var hoop = x<COURT_W/2 ? leftHoop : rightHoop;
+  var d=Math.sqrt((x-hoop.x)*(x-hoop.x)+(y-hoop.y)*(y-hoop.y));
+  return d>135 ? '3pt' : 'mid';
 }
-function getZoneName(nx,ny){ return {paint:'Pintura',mid:'Media distancia','3pt':'Triple arco',corner3:'Triple esquina'}[getZone(nx,ny)]||'Cancha'; }
+function getZoneName(nx,ny){ return {paint:'Pintura',mid:'Media distancia','3pt':'Triple / campo abierto',corner3:'Triple esquina'}[getZone(nx,ny)]||'Cancha'; }
 
 // ════════════════════════════════════════════════════════════
 // STATS HELPERS
@@ -978,7 +1009,7 @@ function rPlayers() {
     var fpC=fp>=4?'#EF4444':fp>=3?'#FACC15':'var(--mu)';
     return '<div class="pc'+(S.selPlayer===p.id?' sel':'')+(on?' onc':'')+'" onclick="selP(\''+p.id+'\')">'
       +'<button class="oc-btn '+(on?'oc-in':'oc-out')+'" onclick="togOC(event,\''+p.id+'\')">'+(on?'EN':'FU')+'</button>'
-      +'<div class="pc-d">#'+p.dorsal+'</div>'
+      +'<div class="pc-num">#'+p.dorsal+'</div>'
       +'<div class="pc-n">'+p.name+'</div>'
       +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:2px">'
       +'<span style="font-size:17px;font-weight:700;color:var(--c1)">'+pPts(p.id)+'</span>'
@@ -1074,7 +1105,7 @@ function showFullLog() {
 // ════════════════════════════════════════════════════════════
 function aDot(a) {
   if(a.x===null||a.x===undefined) return '';
-  var x=a.x/100*340, y=a.y/100*310;
+  var x=a.x/100*COURT_W, y=a.y/100*COURT_H;
   var cA=a.team==='A'?'#F97316':'#60A5FA', c3=a.team==='A'?'#6366F1':'#38BDF8';
   if(a.stat==='T2+') return '<circle cx="'+x+'" cy="'+y+'" r="5.5" fill="'+cA+'" opacity="0.9" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>';
   if(a.stat==='T2-') return '<g stroke="'+cA+'" stroke-width="2.2" stroke-linecap="round"><line x1="'+(x-4.5)+'" y1="'+(y-4.5)+'" x2="'+(x+4.5)+'" y2="'+(y+4.5)+'"/><line x1="'+(x+4.5)+'" y1="'+(y-4.5)+'" x2="'+(x-4.5)+'" y2="'+(y+4.5)+'"/></g>';
@@ -1089,7 +1120,7 @@ function addFadeDot(a) {
   var g=document.getElementById('ldots'); if(!g||a.x===null) return;
   var el=document.createElementNS('http://www.w3.org/2000/svg','g');
   el.innerHTML=aDot(a);
-  var x=a.x/100*340, y=a.y/100*310;
+  var x=a.x/100*COURT_W, y=a.y/100*COURT_H;
   var col={'T2+':'#F97316','T2-':'#F97316','T3+':'#6366F1','T3-':'#6366F1',RO:'#22C55E',RD:'#94A3B8'}[a.stat]||'#818CF8';
   var ring=document.createElementNS('http://www.w3.org/2000/svg','circle');
   ring.setAttribute('cx',x); ring.setAttribute('cy',y); ring.setAttribute('r','6');
@@ -1786,60 +1817,5 @@ function showToast(msg){var t=document.getElementById('toast');t.textContent=msg
   document.getElementById('snB').textContent=S.teams.B.name;
 })();
 </script>
-
-<script>
-(function(){
-  function bindFallbacks(){
-    var navMap = {
-      'Inicio':'home',
-      'Live':'live',
-      'Flow':'flow',
-      'Chart':'chart',
-      'Redes':'redes',
-      'Jugador':'jugador',
-      'AI':'ai',
-      'Informe':'inf',
-      'Temp.':'temp',
-      'Historial':'hist',
-      '⚙':'cfg'
-    };
-
-    document.querySelectorAll('.nav .nb').forEach(function(btn){
-      btn.addEventListener('click', function(ev){
-        var view = navMap[(btn.textContent || '').trim()];
-        if(view && typeof window.sv === 'function') {
-          ev.preventDefault();
-          window.sv(view, btn);
-        }
-      }, {passive:false});
-    });
-
-    var aiSend = document.getElementById('ai-send');
-    if(aiSend && typeof window.sendAI === 'function') {
-      aiSend.addEventListener('click', function(ev){
-        ev.preventDefault();
-        window.sendAI();
-      }, {passive:false});
-    }
-
-    var aiInput = document.getElementById('chat-inp');
-    if(aiInput && typeof window.sendAI === 'function') {
-      aiInput.addEventListener('keydown', function(ev){
-        if(ev.key === 'Enter' && !ev.shiftKey){
-          ev.preventDefault();
-          window.sendAI();
-        }
-      });
-    }
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bindFallbacks);
-  } else {
-    bindFallbacks();
-  }
-})();
-</script>
-
 </body>
 </html>

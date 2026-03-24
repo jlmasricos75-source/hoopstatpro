@@ -288,9 +288,16 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 }
 #v-live #cv-live{
   width:100%;
-  aspect-ratio: 94 / 50;
+  aspect-ratio: 100 / 52;
   height:auto;
-  max-height:58vh;
+  max-height:64vh;
+}
+#v-live .live-court-card{overflow:hidden}
+@media (min-width:980px){
+  #v-live.live-pro.on{
+    grid-template-columns:200px minmax(0, 1fr) 155px;
+    gap:10px;
+  }
 }
 @media (min-width:980px){
   #v-live.live-pro.on{
@@ -568,89 +575,80 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
       </div>
       <button class="btn-s" style="font-size:10px;padding:4px 9px" onclick="clearPos()">Limpiar</button>
     </div>
-    <div id="cv-live-wrap"><svg id="cv-live" viewBox="0 0 940 500" style="width:100%;cursor:crosshair;border-radius:10px;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,.45))" onclick="cClick(event)">
-      <defs>
-        <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#CA8A3C"/><stop offset="45%" stop-color="#B8722A"/><stop offset="100%" stop-color="#A86018"/>
-        </linearGradient>
-        <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8B4F14" stop-opacity="0.60"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.82"/>
-        </linearGradient>
-        <linearGradient id="sh" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="rgba(255,255,255,0.06)"/><stop offset="50%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,0.08)"/>
-        </linearGradient>
-        <pattern id="pk" x="0" y="0" width="940" height="8" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="7.5" x2="940" y2="7.5" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
-        </pattern>
-        <radialGradient id="hg" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#FACC15" stop-opacity="0.40"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <rect x="0" y="0" width="940" height="500" rx="10" fill="url(#wg)"/>
-      <rect x="0" y="0" width="940" height="500" rx="10" fill="url(#pk)"/>
-      <rect x="0" y="0" width="940" height="500" rx="10" fill="url(#sh)"/>
+    
+<div id="cv-live-wrap"><svg id="cv-live" viewBox="0 0 1000 520" style="width:100%;cursor:crosshair;border-radius:10px;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,.45))" onclick="cClick(event)">
+  <defs>
+    <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CA8A3C"/><stop offset="45%" stop-color="#B8722A"/><stop offset="100%" stop-color="#A86018"/>
+    </linearGradient>
+    <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B4F14" stop-opacity="0.60"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="sh" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.06)"/><stop offset="50%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,0.08)"/>
+    </linearGradient>
+    <pattern id="pk" x="0" y="0" width="1000" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="7.5" x2="1000" y2="7.5" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="hg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FACC15" stop-opacity="0.40"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
 
-      <!-- left paint -->
-      <rect x="70" y="130" width="110" height="240" fill="url(#lg)"/>
-      <rect x="70" y="130" width="110" height="240" fill="url(#pk)" opacity="0.45"/>
-      <!-- right paint -->
-      <rect x="760" y="130" width="110" height="240" fill="url(#lg)"/>
-      <rect x="760" y="130" width="110" height="240" fill="url(#pk)" opacity="0.45"/>
+  <rect x="0" y="0" width="1000" height="520" rx="12" fill="url(#wg)"/>
+  <rect x="0" y="0" width="1000" height="520" rx="12" fill="url(#pk)"/>
+  <rect x="0" y="0" width="1000" height="520" rx="12" fill="url(#sh)"/>
 
-      <g stroke="rgba(255,255,255,0.84)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="5" y="5" width="930" height="490" rx="8" stroke-width="2.2"/>
-        <line x1="470" y1="5" x2="470" y2="495" stroke-width="2"/>
-        <circle cx="470" cy="250" r="58" stroke-width="1.8"/>
-        <circle cx="470" cy="250" r="3.5" fill="rgba(255,255,255,0.85)" stroke="none"/>
+  <rect x="6" y="152" width="190" height="216" fill="url(#lg)"/>
+  <rect x="6" y="152" width="190" height="216" fill="url(#pk)" opacity="0.45"/>
+  <rect x="804" y="152" width="190" height="216" fill="url(#lg)"/>
+  <rect x="804" y="152" width="190" height="216" fill="url(#pk)" opacity="0.45"/>
 
-        <!-- left side -->
-        <line x1="5" y1="80" x2="5" y2="420" stroke-width="1.8"/>
-        <line x1="5" y1="80" x2="70" y2="80" stroke-width="1.8"/>
-        <line x1="5" y1="420" x2="70" y2="420" stroke-width="1.8"/>
-        <path d="M70,80 A210,210 0 0,1 70,420" stroke-width="1.8"/>
-        <rect x="70" y="130" width="110" height="240" stroke-width="1.8"/>
-        <circle cx="180" cy="250" r="58" stroke-width="1.6"/>
-        <path d="M180,192 A58,58 0 0,1 180,308" stroke-width="1.6" stroke-dasharray="6,5"/>
-        <path d="M110,250 A40,40 0 0,0 110,250" stroke-width="0"/>
-        <path d="M110,210 A40,40 0 0,1 110,290" stroke-width="1.6"/>
-        <line x1="55" y1="250" x2="55" y2="250" stroke-width="0"/>
-        <line x1="40" y1="232" x2="55" y2="232" stroke-width="1.6"/>
-        <line x1="40" y1="268" x2="55" y2="268" stroke-width="1.6"/>
-        <line x1="40" y1="210" x2="55" y2="210" stroke-width="1.6"/>
-        <line x1="40" y1="290" x2="55" y2="290" stroke-width="1.6"/>
-        <line x1="45" y1="232" x2="45" y2="268" stroke-width="2.8"/>
+  <g stroke="rgba(255,255,255,0.84)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="988" height="508" rx="10" stroke-width="2.4"/>
+    <line x1="500" y1="6" x2="500" y2="514" stroke-width="2"/>
+    <circle cx="500" cy="260" r="60" stroke-width="1.9"/>
+    <circle cx="500" cy="260" r="3.5" fill="rgba(255,255,255,0.85)" stroke="none"/>
 
-        <!-- right side -->
-        <line x1="935" y1="80" x2="935" y2="420" stroke-width="1.8"/>
-        <line x1="935" y1="80" x2="870" y2="80" stroke-width="1.8"/>
-        <line x1="935" y1="420" x2="870" y2="420" stroke-width="1.8"/>
-        <path d="M870,80 A210,210 0 0,0 870,420" stroke-width="1.8"/>
-        <rect x="760" y="130" width="110" height="240" stroke-width="1.8"/>
-        <circle cx="760" cy="250" r="58" stroke-width="1.6"/>
-        <path d="M760,192 A58,58 0 0,0 760,308" stroke-width="1.6" stroke-dasharray="6,5"/>
-        <path d="M830,210 A40,40 0 0,0 830,290" stroke-width="1.6"/>
-        <line x1="900" y1="232" x2="885" y2="232" stroke-width="1.6"/>
-        <line x1="900" y1="268" x2="885" y2="268" stroke-width="1.6"/>
-        <line x1="900" y1="210" x2="885" y2="210" stroke-width="1.6"/>
-        <line x1="900" y1="290" x2="885" y2="290" stroke-width="1.6"/>
-        <line x1="895" y1="232" x2="895" y2="268" stroke-width="2.8"/>
-      </g>
+    <line x1="40" y1="222" x2="40" y2="298" stroke-width="2"/>
+    <circle cx="65" cy="260" r="7.5" stroke="#FACC15" stroke-width="2.2"/>
+    <circle cx="65" cy="260" r="2.4" fill="#FACC15" stroke="none"/>
+    <path d="M107,229 A31,31 0 0,1 107,291" stroke-width="1.8"/>
 
-      <circle cx="180" cy="250" r="18" fill="url(#hg)"/>
-      <circle cx="760" cy="250" r="18" fill="url(#hg)"/>
-      <circle cx="180" cy="250" r="7.5" fill="none" stroke="#FACC15" stroke-width="2.1" opacity="0.9"/>
-      <circle cx="760" cy="250" r="7.5" fill="none" stroke="#FACC15" stroke-width="2.1" opacity="0.9"/>
-      <circle cx="180" cy="250" r="2.4" fill="#FACC15" opacity="0.7"/>
-      <circle cx="760" cy="250" r="2.4" fill="#FACC15" opacity="0.7"/>
+    <line x1="960" y1="222" x2="960" y2="298" stroke-width="2"/>
+    <circle cx="935" cy="260" r="7.5" stroke="#FACC15" stroke-width="2.2"/>
+    <circle cx="935" cy="260" r="2.4" fill="#FACC15" stroke="none"/>
+    <path d="M893,229 A31,31 0 0,0 893,291" stroke-width="1.8"/>
 
-      <text x="165" y="118" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-size="11">PINTURA</text>
-      <text x="775" y="118" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-size="11">PINTURA</text>
-      <text x="470" y="48" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-size="11" letter-spacing="2">PISTA COMPLETA</text>
+    <rect x="6" y="152" width="190" height="216" stroke-width="1.8"/>
+    <circle cx="196" cy="260" r="60" stroke-width="1.6"/>
+    <path d="M196,200 A60,60 0 0,1 196,320" stroke-width="1.6" stroke-dasharray="6,5"/>
 
-      <g id="ldots"></g>
-      <circle id="cur1" cx="-99" cy="-99" r="12" fill="rgba(249,115,22,0.28)" stroke="white" stroke-width="1.6" style="pointer-events:none"/>
-      <circle id="cur2" cx="-99" cy="-99" r="4" fill="white" style="pointer-events:none"/>
-    </svg></div>
+    <rect x="804" y="152" width="190" height="216" stroke-width="1.8"/>
+    <circle cx="804" cy="260" r="60" stroke-width="1.6"/>
+    <path d="M804,200 A60,60 0 0,0 804,320" stroke-width="1.6" stroke-dasharray="6,5"/>
+
+    <line x1="6" y1="95" x2="142" y2="95" stroke-width="1.8"/>
+    <line x1="6" y1="425" x2="142" y2="425" stroke-width="1.8"/>
+    <path d="M142,95 A255,255 0 0,1 142,425" stroke-width="1.8"/>
+
+    <line x1="994" y1="95" x2="858" y2="95" stroke-width="1.8"/>
+    <line x1="994" y1="425" x2="858" y2="425" stroke-width="1.8"/>
+    <path d="M858,95 A255,255 0 0,0 858,425" stroke-width="1.8"/>
+  </g>
+
+  <circle cx="65" cy="260" r="18" fill="url(#hg)"/>
+  <circle cx="935" cy="260" r="18" fill="url(#hg)"/>
+
+  <text x="100" y="140" text-anchor="middle" fill="rgba(255,255,255,0.10)" font-size="11">PINTURA</text>
+  <text x="900" y="140" text-anchor="middle" fill="rgba(255,255,255,0.10)" font-size="11">PINTURA</text>
+  <text x="500" y="40" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-size="11" letter-spacing="2">PISTA COMPLETA</text>
+
+  <g id="ldots"></g>
+  <circle id="cur1" cx="-99" cy="-99" r="12" fill="rgba(249,115,22,0.28)" stroke="white" stroke-width="1.6" style="pointer-events:none"/>
+  <circle id="cur2" cx="-99" cy="-99" r="4" fill="white" style="pointer-events:none"/>
+</svg></div>
+
   </div>
 
   <!-- Players -->
@@ -1107,7 +1105,7 @@ function iniciarPartido() {
   document.getElementById('snB').textContent=rival;
   document.getElementById('tmbtn').textContent='▶ Iniciar';
   document.getElementById('match-meta').textContent=S.game.date+' '+S.game.time+' · '+(S.game.lv==='L'?'🏠 Local':'✈️ Visit.')+' · vs '+rival;
-  updateQ(); setTeam('A'); clearPos(); rLog(); updateBonus();
+  S.curTeam='A'; rebuildLiveState();
   rivalPlayers=[];
   document.getElementById('ng-rival').value='';
   document.getElementById('rival-tags').innerHTML='';
@@ -1175,8 +1173,8 @@ function cClick(e) {
   var svg=document.getElementById('cv-live');
   var pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
   var p=pt.matrixTransform(svg.getScreenCTM().inverse());
-  var nx=Math.max(0,Math.min(100,Math.round(p.x/940*100)));
-  var ny=Math.max(0,Math.min(100,Math.round(p.y/500*100)));
+  var nx=Math.max(0,Math.min(100,Math.round(p.x/1000*100)));
+  var ny=Math.max(0,Math.min(100,Math.round(p.y/520*100)));
   S.courtPos={x:nx,y:ny};
   document.getElementById('cur1').setAttribute('cx',p.x);document.getElementById('cur1').setAttribute('cy',p.y);
   document.getElementById('cur2').setAttribute('cx',p.x);document.getElementById('cur2').setAttribute('cy',p.y);
@@ -1189,13 +1187,13 @@ function clearPos() {
   document.getElementById('poslbl').textContent='Sin posición';
 }
 function getZone(nx,ny) {
-  var x=nx/100*940, y=ny/100*500;
-  var leftD=Math.sqrt((x-180)*(x-180)+(y-250)*(y-250));
-  var rightD=Math.sqrt((x-760)*(x-760)+(y-250)*(y-250));
-  if((x>=70&&x<=180&&y>=130&&y<=370)||(x>=760&&x<=870&&y>=130&&y<=370)) return 'paint';
-  if(((x<=70&&y<=80)||(x<=70&&y>=420))||((x>=870&&y<=80)||(x>=870&&y>=420))) return 'corner3';
-  if(leftD<=210 || rightD<=210) return 'mid';
-  return '3pt';
+  var x=nx/100*1000, y=ny/100*520;
+  var leftD=Math.sqrt((x-65)*(x-65)+(y-260)*(y-260));
+  var rightD=Math.sqrt((x-935)*(x-935)+(y-260)*(y-260));
+  if((x>=6&&x<=196&&y>=152&&y<=368)||(x>=804&&x<=994&&y>=152&&y<=368)) return 'paint';
+  if(((x<=142)&&(y<=95||y>=425))||((x>=858)&&(y<=95||y>=425))) return 'corner3';
+  if(leftD>255 || rightD>255) return '3pt';
+  return 'mid';
 }
 function getZoneName(nx,ny){ return {paint:'Pintura',mid:'Media distancia','3pt':'Triple','corner3':'Triple esquina'}[getZone(nx,ny)]||'Cancha'; }
 
@@ -1226,11 +1224,39 @@ function getSem(pid) {
   return eff>=avg*1.1?'sem-g':eff>=avg*0.85?'sem-y':'sem-r';
 }
 
+
+function normalizeOnCourt(teamKey){
+  if(!S.teams || !S.teams[teamKey]) return;
+  var team=S.teams[teamKey], ps=team.players||[], oc=Array.isArray(team.onCourt)?team.onCourt.slice():[];
+  oc=oc.filter(function(id){ return ps.some(function(p){ return p.id===id; }); });
+  if(oc.length<Math.min(5,ps.length)){
+    ps.forEach(function(p){
+      if(oc.indexOf(p.id)<0 && oc.length<5) oc.push(p.id);
+    });
+  }
+  team.onCourt=oc.slice(0,5);
+}
+function rebuildLiveState(){
+  normalizeOnCourt('A');
+  normalizeOnCourt('B');
+  if(S.curTeam!=='A' && S.curTeam!=='B') S.curTeam='A';
+  if(!S.selPlayer || (S.teams[S.curTeam].onCourt||[]).indexOf(S.selPlayer)<0){
+    S.selPlayer=(S.teams[S.curTeam].onCourt||[])[0]||null;
+  }
+  clearPos();
+  updateQ();
+  setTeam(S.curTeam||'A');
+  rLog();
+  updateBonus();
+}
+
 // ════════════════════════════════════════════════════════════
 // PLAYERS
 // ════════════════════════════════════════════════════════════
 function setTeam(t) {
-  S.curTeam=t; S.selPlayer=null;
+  normalizeOnCourt(t);
+  S.curTeam=t;
+  if((S.teams[t].onCourt||[]).indexOf(S.selPlayer)<0) S.selPlayer=(S.teams[t].onCourt||[])[0]||null;
   document.getElementById('tbA').style.borderColor=t==='A'?'var(--c1)':'var(--bd)';
   document.getElementById('tbA').style.color=t==='A'?'var(--c1)':'var(--tx)';
   document.getElementById('tbB').style.borderColor=t==='B'?'#93C5FD':'var(--bd)';
@@ -2006,7 +2032,7 @@ function loadGame(id){
     document.getElementById('snA').textContent=d.nameA;
     document.getElementById('snB').textContent=d.nameB;
     document.getElementById('match-meta').textContent=d.date+' · vs '+d.nameB;
-    updateQ(); setTeam('A'); rLog(); updateBonus();
+    S.curTeam='A'; rebuildLiveState();
     showToast('Cargado: '+d.nameA+' vs '+d.nameB);
     sv('live',document.querySelectorAll('.nb')[1]);
   }catch(e){showToast('Error al cargar');}

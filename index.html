@@ -1246,8 +1246,34 @@ function rebuildLiveState(){
   clearPos();
   updateQ();
   setTeam(S.curTeam||'A');
-  rLog();
-  updateBonus();
+  try{ rLog(); }catch(e){}
+  try{ updateBonus(); }catch(e){}
+}
+
+
+function updateLiveHeaderInfo(){
+  try{
+    var team = S.teams && S.teams[S.curTeam] ? S.teams[S.curTeam] : null;
+    var li = document.getElementById('lineup-inline');
+    if(li) li.textContent = team ? ((team.onCourt||[]).length + '/5') : '0/5';
+
+    var sel = document.getElementById('sel-player-inline');
+    if(sel) sel.textContent = S.selPlayer ? pName(S.selPlayer) : '—';
+
+    var ai = document.getElementById('alert-inline');
+    if(ai){
+      if(!team || !(team.onCourt||[]).length){
+        ai.textContent = 'Sin alertas';
+      }else{
+        var warns = (team.onCourt||[]).map(function(id){
+          return { name: pName(id), f: pS(id,'FAV')||0 };
+        }).filter(function(x){ return x.f >= 3; });
+        ai.textContent = warns.length
+          ? warns.map(function(x){ return x.name.split(' ')[0] + ' ' + x.f + 'F'; }).join(' · ')
+          : 'Sin alertas';
+      }
+    }
+  }catch(e){}
 }
 
 // ════════════════════════════════════════════════════════════
@@ -1257,10 +1283,9 @@ function setTeam(t) {
   normalizeOnCourt(t);
   S.curTeam=t;
   if((S.teams[t].onCourt||[]).indexOf(S.selPlayer)<0) S.selPlayer=(S.teams[t].onCourt||[])[0]||null;
-  document.getElementById('tbA').style.borderColor=t==='A'?'var(--c1)':'var(--bd)';
-  document.getElementById('tbA').style.color=t==='A'?'var(--c1)':'var(--tx)';
-  document.getElementById('tbB').style.borderColor=t==='B'?'#93C5FD':'var(--bd)';
-  document.getElementById('tbB').style.color=t==='B'?'#93C5FD':'var(--tx)';
+  var tbA=document.getElementById('tbA'), tbB=document.getElementById('tbB');
+  if(tbA){ tbA.style.borderColor=t==='A'?'var(--c1)':'var(--bd)'; tbA.style.color=t==='A'?'var(--c1)':'var(--tx)'; }
+  if(tbB){ tbB.style.borderColor=t==='B'?'#93C5FD':'var(--bd)'; tbB.style.color=t==='B'?'#93C5FD':'var(--tx)'; }
   var el=document.getElementById('pal'); if(el){el.textContent=S.teams[t].name;el.style.color=t==='A'?'var(--c1)':'#93C5FD';}
   rPlayers(); rBench();
 }

@@ -61,27 +61,91 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 .sn{font-size:46px;font-weight:700;line-height:1;}
 
 /* PLAYER GRID */
-.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px;}
-.pc{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:10px;padding:8px 10px;cursor:pointer;position:relative;min-height:78px;}
-.pc.sel{border-color:var(--c1);background:rgba(249,115,22,.1);box-shadow:0 0 0 1px rgba(249,115,22,.2) inset;}
-.pc.onc{border-bottom:3px solid var(--g);}
-.pc-d{font-size:22px;line-height:1;font-weight:800;color:#FFF2D9;letter-spacing:.5px;margin-bottom:4px;text-shadow:0 1px 0 rgba(0,0,0,.35);}
-.pc-n{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:2px 0 4px 0;max-width:80%;}
-.oc-btn{position:absolute;top:6px;right:6px;padding:2px 7px;border-radius:5px;border:none;font-size:10px;font-weight:700;cursor:pointer;font-family:var(--font);}
-.oc-in{background:rgba(34,197,94,.18);color:#86EFAC;}
-.oc-out{background:rgba(100,116,139,.18);color:var(--mu);}
-.live-layout{display:grid;grid-template-columns:minmax(150px,1fr) minmax(0,2.7fr) minmax(150px,1fr);gap:10px;align-items:start;}
-.live-side{background:rgba(255,255,255,.035);border:1px solid var(--bd);border-radius:10px;padding:10px;}
-.live-side .ss{margin-bottom:10px;}
-.live-side .ss:last-child{margin-bottom:0;}
-.live-side .ss-t{font-size:10px;margin-bottom:6px;}
-.live-side .sb-row{gap:6px;}
-.live-side .sb{width:100%;padding:9px 10px;font-size:12px;font-weight:700;justify-content:center;}
-.court-controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px;}
-.court-controls .btn-s,.court-footer .btn-s{font-size:12px;padding:5px 10px;}
-.court-footer{display:flex;align-items:center;gap:8px;margin-top:7px;flex-wrap:wrap;}
-#poslbl{font-size:11px!important;}
-@media (max-width: 980px){.live-layout{grid-template-columns:1fr;}.live-side{order:2;}.live-center{order:1;}}
+.pg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;}
+.pc{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:9px;padding:8px 9px;cursor:pointer;position:relative;min-height:96px}
+.pc.sel{border-color:var(--c1);background:rgba(249,115,22,.1);}
+.pc.onc{border-bottom:2.5px solid var(--g);}
+.pc-d{font-size:10px;color:var(--mu);}
+.pc-n{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:3px 0 1px}
+.oc-btn{position:absolute;top:5px;right:5px;padding:2px 6px;border-radius:4px;border:none;font-size:9px;font-weight:700;cursor:pointer;font-family:var(--font);}
+.bench-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding:8px 10px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:8px}
+.bench-mini{display:flex;flex-wrap:wrap;gap:5px}
+.bench-chip{font-size:10px;padding:3px 7px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:var(--mu)}
+.sub-pill{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;border-radius:10px;font-size:16px;font-weight:800;background:rgba(249,115,22,.14);color:var(--c1);border:1px solid rgba(249,115,22,.32)}
+.lineup-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.lineup-slot{padding:8px;border-radius:8px;border:1px solid var(--bd);background:rgba(255,255,255,.03);cursor:pointer}
+.lineup-slot.sel{border-color:var(--c1);background:rgba(249,115,22,.12)}
+.bench-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.bench-card{padding:9px;border-radius:8px;border:1px solid var(--bd);background:rgba(255,255,255,.03)}
+.bench-card .name{font-size:11px;font-weight:600}
+.bench-card .num{font-size:20px;font-weight:900;color:var(--c1);line-height:1}
+@media (max-width:700px){
+  .pg{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lineup-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bench-list{grid-template-columns:1fr}
+}
+.oc-in{background:rgba(34,197,94,.15);color:#86EFAC;}
+.oc-out{background:rgba(100,116,139,.15);color:var(--mu);}
+
+
+/* LIVE LAYOUT IPAD */
+#v-live.live-pro{
+  display:none;
+}
+#v-live.live-pro.on{
+  display:grid;
+  gap:10px;
+  padding:8px 10px 18px;
+}
+#v-live .live-score{grid-column:1/-1;margin-bottom:0}
+#v-live .live-actions-card{margin-bottom:0}
+#v-live .live-court-card{margin-bottom:0}
+#v-live .live-players-card{margin-bottom:0}
+#v-live .live-log-card{grid-column:1/-1;margin-bottom:0}
+#v-live .live-detail{grid-column:1/-1;margin-bottom:0}
+#v-live .live-court-card{padding:10px 10px 8px}
+#v-live .live-actions-card .sb{
+  padding:5px 8px;
+  font-size:11px;
+  flex:1 1 calc(50% - 4px);
+  min-height:34px;
+}
+#v-live .live-actions-card .sb-row{gap:4px}
+#v-live .live-actions-card .ss{margin-bottom:10px}
+#v-live .live-actions-card .ss-t{font-size:10px;margin-bottom:6px}
+#v-live .live-players-card .pg{display:grid;grid-template-columns:1fr;gap:8px}
+#v-live .live-players-card .pc{
+  min-height:82px;
+  padding:10px 10px 10px 12px;
+  border-radius:10px;
+}
+#v-live .live-players-card .pc-n{font-size:12px}
+#v-live .live-players-card .sub-pill{
+  min-width:42px;
+  height:42px;
+  font-size:22px;
+  border-radius:12px;
+}
+#v-live .live-players-card .oc-btn{top:8px;right:8px}
+#v-live .live-players-card .bench-bar{margin-top:10px;padding:8px}
+#v-live .live-log-card #alog{max-height:160px;overflow:auto}
+#v-live #cv-live-wrap{width:100%;max-width:760px;margin:0 auto}
+#v-live #cv-live{width:100%;display:block}
+@media (min-width: 980px){
+  #v-live.live-pro.on{
+    grid-template-columns:240px minmax(0, 1fr) 190px;
+    align-items:start;
+  }
+  #v-live .live-score{grid-column:1/-1}
+  #v-live .live-actions-card{grid-column:1;grid-row:2 / span 2}
+  #v-live .live-court-card{grid-column:2;grid-row:2}
+  #v-live .live-players-card{grid-column:3;grid-row:2}
+  #v-live .live-detail{grid-column:2 / 4;grid-row:3}
+  #v-live .live-log-card{grid-column:1 / -1;grid-row:4}
+}
+@media (max-width: 979px){
+  #v-live .live-actions-card .sb{flex:1 1 calc(33.33% - 4px)}
+}
 
 /* TABLES */
 .st{width:100%;border-collapse:collapse;font-size:11px;}
@@ -201,7 +265,7 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 
 <!-- ══════════ HOME ══════════ -->
 <div class="view on" id="v-home">
-  <div class="card">
+  <div class="card live-score">
     <div class="ct">Nuevo Partido</div>
     <div class="mg2">
       <div>
@@ -248,7 +312,7 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 </div>
 
 <!-- ══════════ LIVE ══════════ -->
-<div class="view" id="v-live">
+<div class="view live-pro" id="v-live">
 
   <!-- Scoreboard -->
   <div class="card">
@@ -333,128 +397,144 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
     </div>
   </div>
 
-  <!-- Court + action panels -->
-  <div class="live-layout">
-    <div class="live-side">
-      <div class="ss">
-        <div class="ss-t">Tiro</div>
-        <div class="sb-row">
-          <button class="sb" onclick="rs('T2+')">+2 ✓</button>
-          <button class="sb ng" onclick="rs('T2-')">T2 ✗</button>
-          <button class="sb" onclick="rs('T3+')">+3 ✓</button>
-          <button class="sb ng" onclick="rs('T3-')">T3 ✗</button>
-          <button class="sb" onclick="rs('TL+')">+1 TL</button>
-          <button class="sb ng" onclick="rs('TL-')">TL ✗</button>
-        </div>
-      </div>
-      <div class="ss">
-        <div class="ss-t">Rebote / Defensa</div>
-        <div class="sb-row">
-          <button class="sb" onclick="rs('RO')">Reb. Ofensivo</button>
-          <button class="sb" onclick="rs('RD')">Reb. Defensivo</button>
-          <button class="sb" onclick="rs('ROB')">Robo</button>
-          <button class="sb" onclick="rs('TAP')">Tapón</button>
-          <button class="sb ng" onclick="rs('FAV')">Falta</button>
-          <button class="sb ng" onclick="rs('PER')">Pérdida</button>
-          <button class="sb" onclick="rs('AST')">Asistencia</button>
-        </div>
+  <!-- Court -->
+  <div class="card live-court-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div class="ct" style="margin:0">Pista — toca para marcar posición</div>
+      <div style="display:flex;gap:4px">
+        <button class="btn-s" style="font-size:10px;padding:2px 8px;color:var(--c1)" id="tbA" onclick="setTeam('A')">EQ A</button>
+        <button class="btn-s" style="font-size:10px;padding:2px 8px" id="tbB" onclick="setTeam('B')">EQ B</button>
       </div>
     </div>
+    <div id="cv-live-wrap"><svg id="cv-live" viewBox="0 0 340 310" style="width:100%;cursor:crosshair;border-radius:8px;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))" onclick="cClick(event)">
+      <defs>
+        <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CA8A3C"/><stop offset="45%" stop-color="#B8722A"/><stop offset="100%" stop-color="#A86018"/></linearGradient>
+        <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B4F14" stop-opacity="0.6"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.8"/></linearGradient>
+        <linearGradient id="sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.07)"/><stop offset="50%" stop-color="rgba(255,255,255,0)"/><stop offset="100%" stop-color="rgba(0,0,0,0.07)"/></linearGradient>
+        <radialGradient id="hg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FACC15" stop-opacity="0.45"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/></radialGradient>
+        <pattern id="pk" x="0" y="0" width="340" height="5.5" patternUnits="userSpaceOnUse"><line x1="0" y1="5" x2="340" y2="5" stroke="rgba(0,0,0,0.065)" stroke-width="0.8"/></pattern>
+        <clipPath id="cc"><rect x="0" y="0" width="340" height="310" rx="8"/></clipPath>
+      </defs>
+      <rect width="340" height="310" rx="8" fill="url(#wg)"/>
+      <rect width="340" height="310" rx="8" fill="url(#pk)"/>
+      <rect width="340" height="310" rx="8" fill="url(#sh)"/>
+      <rect x="126" y="148" width="88" height="156" fill="url(#lg)" clip-path="url(#cc)"/>
+      <rect x="126" y="148" width="88" height="156" fill="url(#pk)" opacity="0.6" clip-path="url(#cc)"/>
+      <g stroke="rgba(255,255,255,0.82)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="4" width="332" height="302" rx="7" stroke-width="2"/>
+        <path d="M130,4 A40,40 0 0,0 210,4" stroke-width="1.5"/>
+        <line x1="24" y1="304" x2="24" y2="252" stroke-width="1.5"/>
+        <line x1="316" y1="304" x2="316" y2="252" stroke-width="1.5"/>
+        <path d="M24,252 A147,147 0 0,1 316,252" stroke-width="1.5"/>
+        <rect x="126" y="148" width="88" height="156" stroke-width="1.5"/>
+        <path d="M129,148 A41,41 0 0,1 211,148" stroke-width="1.5"/>
+        <path d="M129,148 A41,41 0 0,0 211,148" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <path d="M143,269 A27,27 0 0,1 197,269" stroke-width="1.5"/>
+        <line x1="126" y1="196" x2="135" y2="196" stroke-width="1.5"/>
+        <line x1="126" y1="224" x2="135" y2="224" stroke-width="1.5"/>
+        <line x1="214" y1="196" x2="205" y2="196" stroke-width="1.5"/>
+        <line x1="214" y1="224" x2="205" y2="224" stroke-width="1.5"/>
+        <line x1="152" y1="290" x2="188" y2="290" stroke-width="2.5"/>
+      </g>
+      <circle cx="170" cy="269" r="20" fill="url(#hg)"/>
+      <circle cx="170" cy="269" r="8" fill="none" stroke="#FACC15" stroke-width="2.2" opacity="0.9"/>
+      <circle cx="170" cy="269" r="2.5" fill="#FACC15" opacity="0.65"/>
+      <text x="170" y="138" text-anchor="middle" fill="rgba(255,255,255,0.09)" font-size="9" letter-spacing="2">3 PUNTOS</text>
+      <text x="170" y="204" text-anchor="middle" fill="rgba(255,255,255,0.09)" font-size="8">MID RANGE</text>
+      <text x="170" y="234" text-anchor="middle" fill="rgba(255,255,255,0.08)" font-size="8">PINTURA</text>
+      <g id="ldots"></g>
+      <circle id="cur1" cx="-99" cy="-99" r="9" fill="rgba(249,115,22,0.3)" stroke="white" stroke-width="1.5" style="pointer-events:none"/>
+      <circle id="cur2" cx="-99" cy="-99" r="3" fill="white" style="pointer-events:none"/>
+    </svg></div>
+    <div style="display:flex;align-items:center;gap:7px;margin-top:5px">
+      <span id="poslbl" style="font-size:10px;color:var(--mu)">Sin posición</span>
+      <button class="btn-s" style="font-size:10px;padding:2px 7px" onclick="clearPos()">Limpiar</button>
+    </div>
+  </div>
 
-    <div class="live-center">
-      <div class="card">
-        <div class="court-controls">
-          <div class="ct" style="margin:0">Pista FIBA completa · toca para marcar posición</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="btn-s" style="color:var(--c1)" id="tbA" onclick="setTeam('A')">EQ A</button>
-            <button class="btn-s" id="tbB" onclick="setTeam('B')">EQ B</button>
-          </div>
-        </div>
-        <svg id="cv-live" viewBox="0 0 620 300" style="width:100%;cursor:crosshair;border-radius:8px;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))" onclick="cClick(event)">
-          <defs>
-            <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CA8A3C"/><stop offset="45%" stop-color="#B8722A"/><stop offset="100%" stop-color="#A86018"/></linearGradient>
-            <linearGradient id="lgL" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8B4F14" stop-opacity="0.65"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.8"/></linearGradient>
-            <linearGradient id="lgR" x1="1" y1="0" x2="0" y2="0"><stop offset="0%" stop-color="#8B4F14" stop-opacity="0.65"/><stop offset="100%" stop-color="#7A3A08" stop-opacity="0.8"/></linearGradient>
-            <radialGradient id="hgL" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FACC15" stop-opacity="0.5"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/></radialGradient>
-            <radialGradient id="hgR" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FACC15" stop-opacity="0.5"/><stop offset="100%" stop-color="#FACC15" stop-opacity="0"/></radialGradient>
-            <pattern id="pk" x="0" y="0" width="620" height="5" patternUnits="userSpaceOnUse"><line x1="0" y1="4.5" x2="620" y2="4.5" stroke="rgba(0,0,0,0.06)" stroke-width="0.7"/></pattern>
-          </defs>
-          <rect width="620" height="300" rx="8" fill="url(#wg)"/>
-          <rect width="620" height="300" rx="8" fill="url(#pk)"/>
-          <rect x="4" y="101" width="96" height="98" fill="url(#lgL)"/>
-          <rect x="520" y="101" width="96" height="98" fill="url(#lgR)"/>
-          <g stroke="rgba(255,255,255,0.88)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="4" y="4" width="612" height="292" rx="6" stroke-width="2"/>
-            <line x1="310" y1="4" x2="310" y2="296" stroke-width="1.5"/>
-            <circle cx="310" cy="150" r="34" stroke-width="1.5"/>
-            <circle cx="310" cy="150" r="2.6" stroke-width="4"/>
-            <line x1="4" y1="101" x2="100" y2="101" stroke-width="1.5"/>
-            <line x1="4" y1="199" x2="100" y2="199" stroke-width="1.5"/>
-            <line x1="100" y1="101" x2="100" y2="199" stroke-width="1.5"/>
-            <path d="M100,117 A33,33 0 0,1 100,183" stroke-width="1.5"/>
-            <path d="M100,117 A33,33 0 0,0 100,183" stroke-width="1.5" stroke-dasharray="5,4"/>
-            <path d="M79,22 A135,135 0 0,1 79,278" stroke-width="1.5"/>
-            <line x1="4" y1="22" x2="79" y2="22" stroke-width="1.5"/>
-            <line x1="4" y1="278" x2="79" y2="278" stroke-width="1.5"/>
-            <line x1="4" y1="133" x2="4" y2="167" stroke-width="4.5"/>
-            <path d="M69,125 A25,25 0 0,1 69,175" stroke-width="1.5"/>
-            <line x1="616" y1="101" x2="520" y2="101" stroke-width="1.5"/>
-            <line x1="616" y1="199" x2="520" y2="199" stroke-width="1.5"/>
-            <line x1="520" y1="101" x2="520" y2="199" stroke-width="1.5"/>
-            <path d="M520,117 A33,33 0 0,0 520,183" stroke-width="1.5"/>
-            <path d="M520,117 A33,33 0 0,1 520,183" stroke-width="1.5" stroke-dasharray="5,4"/>
-            <path d="M541,22 A135,135 0 0,0 541,278" stroke-width="1.5"/>
-            <line x1="616" y1="22" x2="541" y2="22" stroke-width="1.5"/>
-            <line x1="616" y1="278" x2="541" y2="278" stroke-width="1.5"/>
-            <line x1="616" y1="133" x2="616" y2="167" stroke-width="4.5"/>
-            <path d="M551,125 A25,25 0 0,0 551,175" stroke-width="1.5"/>
-          </g>
-          <circle cx="35" cy="150" r="20" fill="url(#hgL)"/>
-          <circle cx="35" cy="150" r="9" fill="none" stroke="#FACC15" stroke-width="2" opacity="0.9"/>
-          <circle cx="35" cy="150" r="2.5" fill="#FACC15" opacity="0.65"/>
-          <circle cx="585" cy="150" r="20" fill="url(#hgR)"/>
-          <circle cx="585" cy="150" r="9" fill="none" stroke="#FACC15" stroke-width="2" opacity="0.9"/>
-          <circle cx="585" cy="150" r="2.5" fill="#FACC15" opacity="0.65"/>
-          <text x="52" y="18" text-anchor="middle" fill="rgba(249,115,22,0.55)" font-size="8" font-weight="700" id="court-label-A">MI EQUIPO</text>
-          <text x="568" y="18" text-anchor="middle" fill="rgba(147,197,253,0.55)" font-size="8" font-weight="700" id="court-label-B">RIVAL</text>
-          <g id="ldots"></g>
-          <circle id="cur1" cx="-99" cy="-99" r="8" fill="rgba(249,115,22,0.3)" stroke="white" stroke-width="1.5" style="pointer-events:none"/>
-          <circle id="cur2" cx="-99" cy="-99" r="3" fill="white" style="pointer-events:none"/>
-        </svg>
-        <div class="court-footer">
-          <span id="poslbl" style="color:var(--mu)">Sin posición marcada</span>
-          <button class="btn-s" onclick="clearPos()">Limpiar</button>
-        </div>
+  <!-- Players -->
+  <div class="card live-players-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+      <div class="ct">Jugadores en pista — <span id="pal" style="color:var(--c1)">Mi Equipo</span></div>
+      <button class="btn-s" style="padding:5px 10px" onclick="openBenchModal()">Cambios</button>
+    </div>
+    <div class="pg" id="pgrid"></div>
+    <div id="nopl" class="empty" style="display:none">Inicia un partido desde Inicio</div>
+    <div id="benchBar" class="bench-bar" style="display:none"></div>
+    <div style="font-size:9px;color:var(--mu);margin-top:5px">Quinteto activo siempre visible · pensado para trabajar en horizontal en iPad</div>
+  </div>
+
+  <!-- Shot detail panel (inline, not fixed) -->
+  <div id="detail-panel" class="live-detail" style="display:none;background:var(--bg3);border:1px solid var(--c1);border-radius:8px;padding:12px;margin-bottom:8px">
+    <div style="font-size:10px;font-weight:600;color:var(--c1);margin-bottom:8px" id="detail-title">Detalle del tiro</div>
+    <div style="font-size:9px;color:var(--mu);margin-bottom:4px">Tipo</div>
+    <div style="display:flex;flex-wrap:wrap;margin-bottom:8px" id="sp-types">
+      <button class="sp-opt on" onclick="spT(this,'Bandeja')">Bandeja</button>
+      <button class="sp-opt" onclick="spT(this,'Floater')">Floater</button>
+      <button class="sp-opt" onclick="spT(this,'Jump Shot')">Jump Shot</button>
+      <button class="sp-opt" onclick="spT(this,'Triple arco')">Triple arco</button>
+      <button class="sp-opt" onclick="spT(this,'Triple esq.')">Triple esq.</button>
+      <button class="sp-opt" onclick="spT(this,'Gancho')">Gancho</button>
+    </div>
+    <div style="font-size:9px;color:var(--mu);margin-bottom:4px">Defensa</div>
+    <div style="display:flex;gap:4px;margin-bottom:10px" id="sp-def">
+      <button class="sp-opt on" onclick="spD(this,false)">Abierto</button>
+      <button class="sp-opt" onclick="spD(this,true)">Contestado</button>
+    </div>
+    <div style="display:flex;gap:6px">
+      <button class="btn-p" onclick="saveDetail()">Guardar detalle</button>
+      <button class="btn-s" onclick="closeDetail()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Stat buttons -->
+  <div class="card live-actions-card">
+    <div class="ct">Registrar — <span id="spl" style="color:var(--mu)">selecciona jugador</span></div>
+    <div class="ss">
+      <div class="ss-t">Tiro</div>
+      <div class="sb-row">
+        <button class="sb" onclick="rs('T2+')">+2 ✓</button>
+        <button class="sb ng" onclick="rs('T2-')">T2 ✗</button>
+        <button class="sb" onclick="rs('T3+')">+3 ✓</button>
+        <button class="sb ng" onclick="rs('T3-')">T3 ✗</button>
+        <button class="sb" onclick="rs('TL+')">+1 TL</button>
+        <button class="sb ng" onclick="rs('TL-')">TL ✗</button>
       </div>
     </div>
-
-    <div class="live-side">
-      <div class="card" style="background:transparent;border:none;padding:0;margin:0 0 10px 0;box-shadow:none">
-        <div class="ct">Registrar — <span id="spl" style="color:var(--mu)">selecciona jugador</span></div>
+    <div class="ss">
+      <div class="ss-t">Rebote / Defensa</div>
+      <div class="sb-row">
+        <button class="sb" onclick="rs('RO')">Reb. Ofensivo</button>
+        <button class="sb" onclick="rs('RD')">Reb. Defensivo</button>
+        <button class="sb" onclick="rs('ROB')">Robo</button>
+        <button class="sb" onclick="rs('TAP')">Tapón</button>
+        <button class="sb ng" onclick="rs('FAV')">Falta</button>
+        <button class="sb ng" onclick="rs('PER')">Pérdida</button>
+        <button class="sb" onclick="rs('AST')">Asistencia</button>
       </div>
-      <div class="ss">
-        <div class="ss-t" style="color:var(--play);letter-spacing:1.5px">⬡ PLAYMAKING</div>
-        <div class="sb-row">
-          <button class="sb play" onclick="rs('PT')">PAINT TOUCH</button>
-          <button class="sb play" onclick="rs('PT8')">PT &gt;8"</button>
-          <button class="sb play" onclick="rs('DHO')">DHO</button>
-          <button class="sb play" onclick="rs('STA')">STAMPEDE</button>
-          <button class="sb play" onclick="rs('INV')">INVERSIÓN</button>
-        </div>
+    </div>
+    <div class="ss">
+      <div class="ss-t" style="color:var(--play);letter-spacing:1.5px">⬡ PLAYMAKING</div>
+      <div class="sb-row">
+        <button class="sb play" onclick="rs('PT')">PAINT TOUCH</button>
+        <button class="sb play" onclick="rs('PT8')">PT &gt;8"</button>
+        <button class="sb play" onclick="rs('DHO')">DHO</button>
+        <button class="sb play" onclick="rs('STA')">STAMPEDE</button>
+        <button class="sb play" onclick="rs('INV')">INVERSIÓN</button>
       </div>
-      <div class="ss">
-        <div class="ss-t" style="color:var(--fin);letter-spacing:1.5px">⬡ FINISHING</div>
-        <div class="sb-row">
-          <button class="sb fin" onclick="rs('LAR')">LAROCHE</button>
-          <button class="sb fin" onclick="rs('EPT')">EXTRAPASS+TIRO</button>
-          <button class="sb fin" onclick="rs('RPT')">REEMPLAZO+TIRO</button>
-        </div>
+    </div>
+    <div class="ss">
+      <div class="ss-t" style="color:var(--fin);letter-spacing:1.5px">⬡ FINISHING</div>
+      <div class="sb-row">
+        <button class="sb fin" onclick="rs('LAR')">LAROCHE</button>
+        <button class="sb fin" onclick="rs('EPT')">EXTRAPASS+TIRO</button>
+        <button class="sb fin" onclick="rs('RPT')">REEMPLAZO+TIRO</button>
       </div>
     </div>
   </div>
 
   <!-- Log -->
-  <div class="card">
+  <div class="card live-log-card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <div class="ct" style="margin:0">Acciones recientes</div>
       <button class="btn-s" style="font-size:10px;padding:2px 7px" onclick="openModal('log-modal')">Ver todas</button>
@@ -713,7 +793,8 @@ var S = {
   timerSec: 0,
   timerInt: null,
   actions: [],
-  courtPos: null
+  courtPos: null,
+  subOut: null
 };
 
 var LBL = {'T2+':'T2✓','T2-':'T2✗','T3+':'T3✓','T3-':'T3✗','TL+':'TL✓','TL-':'TL✗',RO:'R.Of',RD:'R.Def',ROB:'Robo',FAV:'Falta',AST:'Asist',PER:'Pérd',TAP:'Tapón',PT:'PT',PT8:'PT8',INV:'INV',LAR:'LAR',DHO:'DHO',STA:'STA',EPT:'E+T',RPT:'R+T',TO:'T.Mto'};
@@ -815,8 +896,8 @@ function iniciarPartido() {
     notes: document.getElementById('ng-notes').value,
     convoc: S.game.convoc
   };
-  S.teams.A = { name:myT.name, players:JSON.parse(JSON.stringify(convocPlayers)), goals:myT.goals||{}, onCourt:[] };
-  S.teams.B = { name:rival,    players:JSON.parse(JSON.stringify(rivalPlayers)),  goals:{},             onCourt:[] };
+  S.teams.A = { name:myT.name, players:JSON.parse(JSON.stringify(convocPlayers)), goals:myT.goals||{}, onCourt:JSON.parse(JSON.stringify(convocPlayers.slice(0,5).map(function(p){return p.id;}))) };
+  S.teams.B = { name:rival,    players:JSON.parse(JSON.stringify(rivalPlayers)),  goals:{},             onCourt:JSON.parse(JSON.stringify(rivalPlayers.slice(0,5).map(function(p){return p.id;}))) };
   S.actions=[]; S.q=1; S.timerSec=0; S.selPlayer=null; S.courtPos=null;
   if(S.timerOn){ clearInterval(S.timerInt); S.timerOn=false; }
   document.getElementById('scA').textContent='0';
@@ -893,8 +974,8 @@ function cClick(e) {
   var svg=document.getElementById('cv-live');
   var pt=svg.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
   var p=pt.matrixTransform(svg.getScreenCTM().inverse());
-  var nx=Math.max(0,Math.min(100,Math.round(p.x/620*100)));
-  var ny=Math.max(0,Math.min(100,Math.round(p.y/300*100)));
+  var nx=Math.max(0,Math.min(100,Math.round(p.x/340*100)));
+  var ny=Math.max(0,Math.min(100,Math.round(p.y/310*100)));
   S.courtPos={x:nx,y:ny};
   document.getElementById('cur1').setAttribute('cx',p.x);document.getElementById('cur1').setAttribute('cy',p.y);
   document.getElementById('cur2').setAttribute('cx',p.x);document.getElementById('cur2').setAttribute('cy',p.y);
@@ -904,11 +985,11 @@ function clearPos() {
   S.courtPos=null;
   document.getElementById('cur1').setAttribute('cx','-99');document.getElementById('cur1').setAttribute('cy','-99');
   document.getElementById('cur2').setAttribute('cx','-99');document.getElementById('cur2').setAttribute('cy','-99');
-  document.getElementById('poslbl').textContent='Sin posición marcada';
+  document.getElementById('poslbl').textContent='Sin posición';
 }
 function getZone(nx,ny) {
   var x=nx/100*340, y=ny/100*310;
-  if(x>114&&x<226&&y>178) return 'paint';
+  if(x>126&&x<214&&y>148) return 'paint';
   if((x<24||x>316)&&y>252) return 'corner3';
   var d=Math.sqrt((x-170)*(x-170)+(y-269)*(y-269));
   return d>147 ? '3pt' : 'mid';
@@ -952,29 +1033,111 @@ function setTeam(t) {
   document.getElementById('tbB').style.borderColor=t==='B'?'#93C5FD':'var(--bd)';
   document.getElementById('tbB').style.color=t==='B'?'#93C5FD':'var(--tx)';
   var el=document.getElementById('pal'); if(el){el.textContent=S.teams[t].name;el.style.color=t==='A'?'var(--c1)':'#93C5FD';}
-  rPlayers();
+  rPlayers(); rBench();
+}
+
+function ensureOnCourtLimit(teamKey){
+  var team=S.teams[teamKey], ps=team.players||[], oc=(team.onCourt||[]).filter(function(id){return ps.some(function(p){return p.id===id;});});
+  if(!oc.length && ps.length){ oc = ps.slice(0,5).map(function(p){return p.id;}); }
+  if(oc.length>5) oc = oc.slice(0,5);
+  team.onCourt = oc;
+  if(S.selPlayer && teamKey===S.curTeam && oc.indexOf(S.selPlayer)<0){ S.selPlayer = oc[0] || null; }
+}
+function benchPlayersFor(teamKey){
+  var team=S.teams[teamKey], oc=team.onCourt||[];
+  return (team.players||[]).filter(function(p){ return oc.indexOf(p.id)<0; });
 }
 function rPlayers() {
-  var ps=S.teams[S.curTeam].players, g=document.getElementById('pgrid'), np=document.getElementById('nopl');
-  if(!ps||!ps.length){ g.innerHTML=''; np.style.display='block'; return; }
+  var ps=S.teams[S.curTeam].players, g=document.getElementById('pgrid'), np=document.getElementById('nopl'), bb=document.getElementById('benchBar');
+  if(!ps||!ps.length){ g.innerHTML=''; np.style.display='block'; if(bb)bb.style.display='none'; return; }
+  ensureOnCourtLimit(S.curTeam);
   np.style.display='none';
   var oc=S.teams[S.curTeam].onCourt||[];
-  g.innerHTML=ps.map(function(p){
-    var on=oc.indexOf(p.id)>=0, fp=pS(p.id,'FAV');
+  var visible=oc.map(function(id){ return ps.find(function(p){return p.id===id;}); }).filter(Boolean);
+  if(!visible.length){ g.innerHTML=''; if(bb)bb.style.display='none'; return; }
+  if(!S.selPlayer || oc.indexOf(S.selPlayer)<0) S.selPlayer = visible[0].id;
+  g.innerHTML=visible.map(function(p){
+    var fp=pS(p.id,'FAV');
     var fpC=fp>=4?'#EF4444':fp>=3?'#FACC15':'var(--mu)';
-    return '<div class="pc'+(S.selPlayer===p.id?' sel':'')+(on?' onc':'')+'" onclick="selP(\''+p.id+'\')">'
-      +'<button class="oc-btn '+(on?'oc-in':'oc-out')+'" onclick="togOC(event,\''+p.id+'\')">'+(on?'EN':'FU')+'</button>'
-      +'<div class="pc-d">#'+p.dorsal+'</div>'
+    return '<div class="pc'+(S.selPlayer===p.id?' sel':'')+' onc" onclick="selP(\''+p.id+'\')">'
+      +'<button class="oc-btn oc-in" onclick="prepSub(event,\''+p.id+'\')">Cambio</button>'
+      +'<div class="pc-d">EN PISTA</div>'
       +'<div class="pc-n">'+p.name+'</div>'
-      +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:4px">'
-      +'<span style="font-size:18px;font-weight:800;color:var(--c1)">'+pPts(p.id)+'</span>'
+      +'<div class="sub-pill">#'+p.dorsal+'</div>'
+      +'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px">'
+      +'<span style="font-size:17px;font-weight:700;color:var(--c1)">'+pPts(p.id)+'</span>'
       +'<span style="font-size:11px;font-weight:700;color:'+fpC+'">FP '+fp+'</span>'
       +'</div></div>';
   }).join('');
+  var bench = benchPlayersFor(S.curTeam);
+  if(bb){
+    bb.style.display='flex';
+    bb.innerHTML='<div><div style="font-size:10px;color:var(--mu);margin-bottom:4px">Banquillo visible solo bajo demanda</div><div class="bench-mini">'+(bench.length?bench.map(function(p){return '<span class="bench-chip">#'+p.dorsal+' '+p.name+'</span>';}).join(''):'<span class="bench-chip">Sin suplentes</span>')+'</div></div><button class="btn-s" style="white-space:nowrap" onclick="openBenchModal()">Abrir cambios</button>';
+  }
   var el=document.getElementById('spl'); if(el){el.textContent=S.selPlayer?pName(S.selPlayer):'selecciona jugador';el.style.color=S.selPlayer?'var(--c1)':'var(--mu)';}
 }
 function selP(id){ S.selPlayer=id; rPlayers(); }
-function togOC(e,id){ e.stopPropagation(); var oc=S.teams[S.curTeam].onCourt; var i=oc.indexOf(id); if(i>=0)oc.splice(i,1);else oc.push(id); rPlayers(); if(sessionId)setTimeout(pushSession,150); }
+function prepSub(e,id){ e.stopPropagation(); S.subOut=id; rBench(); openModal('bench-modal'); }
+function clearSubSelection(){ S.subOut=null; rBench(); }
+function openBenchModal(){ ensureOnCourtLimit(S.curTeam); rBench(); openModal('bench-modal'); }
+function swapPlayer(inId){
+  ensureOnCourtLimit(S.curTeam);
+  var team=S.teams[S.curTeam], oc=team.onCourt||[];
+  if(S.subOut){
+    var idx=oc.indexOf(S.subOut);
+    if(idx>=0) oc[idx]=inId;
+    else if(oc.length<5) oc.push(inId);
+  }else{
+    if(oc.indexOf(inId)>=0) return;
+    if(oc.length>=5){ showToast('Selecciona antes quién sale'); return; }
+    oc.push(inId);
+  }
+  team.onCourt = oc.filter(function(v,i,a){return a.indexOf(v)===i;}).slice(0,5);
+  if(team.onCourt.indexOf(S.selPlayer)<0) S.selPlayer=inId;
+  S.subOut=null;
+  rPlayers(); rBench();
+  if(sessionId)setTimeout(pushSession,150);
+}
+function removeFromCourt(id){
+  var team=S.teams[S.curTeam], oc=team.onCourt||[], i=oc.indexOf(id);
+  if(i>=0) oc.splice(i,1);
+  team.onCourt=oc;
+  if(S.selPlayer===id) S.selPlayer=oc[0]||null;
+  S.subOut=null;
+  rPlayers(); rBench();
+  if(sessionId)setTimeout(pushSession,150);
+}
+function autoLineup(){
+  var team=S.teams[S.curTeam];
+  team.onCourt=(team.players||[]).slice(0,5).map(function(p){return p.id;});
+  if(team.onCourt.length) S.selPlayer=team.onCourt[0];
+  S.subOut=null;
+  rPlayers(); rBench();
+  if(sessionId)setTimeout(pushSession,150);
+}
+function rBench(){
+  ensureOnCourtLimit(S.curTeam);
+  var team=S.teams[S.curTeam], ps=team.players||[], oc=team.onCourt||[];
+  var lg=document.getElementById('lineup-grid'), bl=document.getElementById('bench-list'), help=document.getElementById('sub-help');
+  if(!lg || !bl) return;
+  var lineup=oc.map(function(id){return ps.find(function(p){return p.id===id;});}).filter(Boolean);
+  lg.innerHTML=lineup.map(function(p){
+    var isSel=S.subOut===p.id;
+    return '<div class="lineup-slot'+(isSel?' sel':'')+'" onclick="S.subOut=\''+p.id+'\';rBench()">'
+      +'<div style="font-size:9px;color:'+(isSel?'var(--c1)':'var(--mu)')+'">'+(isSel?'SALE':'EN PISTA')+'</div>'
+      +'<div style="font-size:22px;font-weight:900;color:var(--c1);line-height:1;margin-top:3px">#'+p.dorsal+'</div>'
+      +'<div style="font-size:11px;font-weight:600;margin-top:4px">'+p.name+'</div>'
+      +'<button class="btn-s" style="margin-top:8px;width:100%" onclick="event.stopPropagation();removeFromCourt(\''+p.id+'\')">Quitar</button>'
+      +'</div>';
+  }).join('');
+  help.textContent = S.subOut ? ('Seleccionado para salir: '+pName(S.subOut)+'. Ahora elige quién entra desde el banquillo.') : (oc.length>=5 ? 'Toca un jugador del quinteto para marcar quién sale. Después elige quién entra.' : 'Tienes menos de 5 en pista. Elige un jugador del banquillo para añadirlo.');
+  var bench=benchPlayersFor(S.curTeam);
+  bl.innerHTML = bench.length ? bench.map(function(p){
+    return '<div class="bench-card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><div class="name">'+p.name+'</div><div style="font-size:10px;color:var(--mu);margin-top:2px">Disponible</div></div><div class="num">#'+p.dorsal+'</div></div><button class="btn-p" style="margin-top:8px;width:100%" onclick="swapPlayer(\''+p.id+'\')">'+(S.subOut?'Entra por '+pName(S.subOut).split(' ')[0]:'Poner en pista')+'</button></div>';
+  }).join('') : '<div class="empty">No hay jugadores en banquillo</div>';
+}
+function togOC(e,id){ e.stopPropagation(); prepSub(e,id); }
+
 
 // ════════════════════════════════════════════════════════════
 // ACTIONS
@@ -1772,5 +1935,29 @@ function showToast(msg){var t=document.getElementById('toast');t.textContent=msg
   document.getElementById('snB').textContent=S.teams.B.name;
 })();
 </script>
+
+<div class="modal" id="bench-modal">
+  <div class="mcard">
+    <div class="mh">
+      <div>
+        <div class="tt">Cambios y banquillo</div>
+        <div style="font-size:10px;color:var(--mu);margin-top:2px">Elige quién sale y luego quién entra</div>
+      </div>
+      <button class="mclose" onclick="closeModal('bench-modal')">✕</button>
+    </div>
+    <div class="ct" style="margin-top:0">Quinteto actual</div>
+    <div id="lineup-grid" class="lineup-grid"></div>
+    <div id="sub-help" style="font-size:10px;color:var(--mu);margin:8px 0 10px"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px">
+      <div class="ct" style="margin:0">Banquillo</div>
+      <div style="display:flex;gap:6px">
+        <button class="btn-s" onclick="autoLineup()">Auto 5</button>
+        <button class="btn-s" onclick="clearSubSelection()">Limpiar selección</button>
+      </div>
+    </div>
+    <div id="bench-list" class="bench-list"></div>
+  </div>
+</div>
+
 </body>
 </html>

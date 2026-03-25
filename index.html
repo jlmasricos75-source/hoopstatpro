@@ -1489,7 +1489,13 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
   width:100%;
   aspect-ratio: 120 / 60;
   height:auto;
-  max-height:68vh;
+  max-height:58vh; /* AJUSTE: reducir altura máxima de pista para mejorar visibilidad de botones en iPad */
+}
+/* AJUSTE: reducir altura máxima de pista para mejorar visibilidad de botones en iPad */
+@media (min-width:768px) and (max-width:1180px) and (orientation:landscape){
+  #v-live #cv-live{
+    max-height:50vh;
+  }
 }
 #v-live .live-court-card{overflow:hidden}
 @media (min-width:980px){
@@ -1523,11 +1529,11 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
   grid-template-columns:1fr auto 1fr;
   gap:8px;
   align-items:center;
-  padding:8px 10px;
+  padding:6px 10px; /* AJUSTE: compactar cabecera de pista para ganar espacio vertical */
   border:1px solid var(--bd);
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
   border-radius:12px;
-  min-height:66px;
+  min-height:56px; /* AJUSTE: compactar cabecera de pista para ganar espacio vertical */
 }
 #v-live .court-teambox{display:flex;align-items:center;gap:10px;min-width:0}
 #v-live .court-teambox.away{justify-content:flex-end}
@@ -1541,7 +1547,7 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
   max-width:120px;
 }
 #v-live .court-teamscore{
-  font-size:34px;
+  font-size:30px; /* AJUSTE: compactar cabecera de pista para ganar espacio vertical */
   line-height:1;
   font-weight:900;
   color:var(--c1);

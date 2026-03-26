@@ -36,6 +36,7 @@
     grid-column: 2;
     grid-row: 3;
     margin-top: 2px;
+    padding: 6px !important;
   }
 
   #v-live .live-actions-secondary {
@@ -68,6 +69,45 @@
     max-height: 82vh !important;
     min-height: 440px;
     display: block;
+  }
+
+  #v-live .live-players-card .pg {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+  }
+
+  #v-live .live-players-card .pbtn,
+  #v-live .live-players-card .btn-p,
+  #v-live .live-players-card .pb,
+  #v-live .live-players-card button {
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 2px 4px !important;
+    font-size: 11px !important;
+    line-height: 1.05 !important;
+    border-radius: 8px !important;
+  }
+
+  #v-live .live-players-card .name,
+  #v-live .live-players-card .pn,
+  #v-live .live-players-card .player-name {
+    font-size: 10px !important;
+    line-height: 1 !important;
+  }
+
+  #v-live .live-players-card .num,
+  #v-live .live-players-card .jersey,
+  #v-live .live-players-card .player-number {
+    font-size: 11px !important;
+    line-height: 1 !important;
+  }
+
+  #v-live .live-players-card .sub,
+  #v-live .live-players-card .meta,
+  #v-live .live-players-card .player-meta {
+    font-size: 9px !important;
+    line-height: 1 !important;
   }
 }
 

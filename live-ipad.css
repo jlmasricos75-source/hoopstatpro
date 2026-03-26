@@ -1,8 +1,7 @@
 @media (min-width: 768px) {
-
   #v-live.live-pro.on {
     display: grid;
-    grid-template-columns: 160px minmax(0, 1fr) 140px;
+    grid-template-columns: 145px minmax(0, 1fr) 125px;
     grid-auto-rows: auto;
     gap: 6px;
     align-items: start;
@@ -21,12 +20,14 @@
     max-height: 60vh;
     overflow-y: auto;
     overflow-x: hidden;
+    margin-bottom: 0 !important;
+    padding-bottom: 4px !important;
   }
 
   #v-live .live-court-card {
     grid-column: 2;
     grid-row: 2;
-    padding: 4px 8px 6px;
+    padding: 2px 4px 4px !important;
     display: flex;
     flex-direction: column;
   }
@@ -34,7 +35,7 @@
   #v-live .live-players-card {
     grid-column: 2;
     grid-row: 3;
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
   #v-live .live-actions-secondary {
@@ -51,19 +52,30 @@
     grid-row: 4;
   }
 
+  #v-live .court-topbar-pro {
+    margin-bottom: 2px !important;
+    gap: 2px !important;
+  }
+
+  #v-live .court-actions-top {
+    gap: 2px !important;
+    margin-bottom: 2px !important;
+  }
+
   #v-live #cv-live {
     width: 100%;
     aspect-ratio: 115 / 60;
-    max-height: 80vh; /* más grande en escritorio/iPad horizontal */
-  }
-
-  /* DEBUG: para ver si entra la media query */
-  #v-live .live-court-card {
-    outline: 4px solid red !important;
+    max-height: 82vh !important;
+    min-height: 440px;
+    display: block;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+  #v-live.live-pro.on {
+    gap: 4px !important;
+  }
+
   #v-live .live-actions-card .sb,
   #v-live .live-actions-card .btn-s,
   #v-live .live-actions-card .btn-p {
@@ -76,5 +88,14 @@
     z-index: 3;
     background: linear-gradient(180deg, rgba(30,41,59,.98), rgba(30,41,59,.9));
     padding-bottom: 6px;
+  }
+
+  #v-live .court-scoreband {
+    min-height: 44px;
+    padding: 3px 5px;
+  }
+
+  #v-live .court-teamscore {
+    font-size: 24px;
   }
 }

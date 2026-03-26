@@ -1,64 +1,10 @@
-@media (min-width: 768px) {
-
-  #v-live.live-pro.on {
-    display: grid;
-    grid-template-columns: 160px minmax(0, 1fr) 140px;
-    grid-auto-rows: auto;
-    gap: 6px;
-    align-items: start;
-    align-content: start;
+@media (min-width: 768px) and (max-width: 1024px) {
+  #v-live .live-actions-card .sb {
+    min-height: 40px;
+    font-size: 12px;
   }
 
-  #v-live .live-score {
-    grid-column: 1 / -1;
-    grid-row: 1;
-  }
-
-  #v-live .live-actions-card {
-    grid-column: 1;
-    grid-row: 2;
-    align-self: start;
-    max-height: 60vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  #v-live .live-court-card {
-    grid-column: 2;
-    grid-row: 2;
-    padding: 4px 8px 6px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #v-live .live-players-card {
-    grid-column: 2;
-    grid-row: 3;
-    margin-top: 4px;
-  }
-
-  #v-live .live-actions-secondary {
-    grid-column: 3;
-    grid-row: 2;
-    align-self: start;
-    max-height: 60vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  #v-live .live-log-card {
-    grid-column: 1 / -1;
-    grid-row: 4;
-  }
-
-  #v-live #cv-live {
-    width: 100%;
-    aspect-ratio: 115 / 60;
-    max-height: 80vh; /* más grande en escritorio/iPad horizontal */
-  }
-
-  /* DEBUG: para ver si entra la media query */
-  #v-live .live-court-card {
-    outline: 4px solid red !important;
+  #v-live .court-actions-top .btn-s {
+    min-height: 36px;
   }
 }

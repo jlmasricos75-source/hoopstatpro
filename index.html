@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="stylesheet" href="live-ipad.css?v=3">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1391,7 +1390,7 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 #v-live.live-pro{
   display:none;
 }
-/* LIMPIEZA LIVE: dejamos solo la base visual común y el layout final se define más abajo en la media query de iPad */
+/* AJUSTE ESTÉTICO: subir pista en Live para aprovechar espacio (solo layout, sin tocar lógica) */
 #v-live.live-pro.on{
   display:grid;
   gap:6px;
@@ -1400,10 +1399,11 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 }
 #v-live .live-score{grid-column:1/-1;margin-bottom:0}
 #v-live .live-actions-card{margin-bottom:0}
-#v-live .live-court-card{margin-bottom:0;padding:10px 10px 8px;overflow:hidden}
+#v-live .live-court-card{margin-bottom:0}
 #v-live .live-players-card{margin-bottom:0}
-#v-live .live-log-card{margin-bottom:0}
-#v-live .live-detail{margin-bottom:0}
+#v-live .live-log-card{grid-column:1/-1;margin-bottom:0}
+#v-live .live-detail{grid-column:1/-1;margin-bottom:0}
+#v-live .live-court-card{padding:10px 10px 8px}
 #v-live .live-actions-card .sb{
   padding:5px 8px;
   font-size:11px;
@@ -1436,38 +1436,85 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 #v-live > .card:first-child #qinfo{margin-bottom:4px !important}
 #v-live > .card:first-child .bonus-bar{margin-top:2px}
 #v-live > .card:first-child #bonus-alert{margin-top:4px}
+@media (min-width: 980px){
+  #v-live.live-pro.on{
+    grid-template-columns:240px minmax(0, 1fr) 190px;
+    align-items:start;
+  }
+  #v-live .live-score{grid-column:1/-1}
+  #v-live .live-actions-card{grid-column:1;grid-row:2 / span 2}
+  #v-live .live-court-card{grid-column:2;grid-row:2}
+  #v-live .live-players-card{grid-column:3;grid-row:2}
+  #v-live .live-detail{grid-column:2 / 4;grid-row:3}
+  #v-live .live-log-card{grid-column:1 / -1;grid-row:4}
+}
 @media (max-width: 979px){
   #v-live .live-actions-card .sb{flex:1 1 calc(33.33% - 4px)}
 }
 
-/* FULL COURT HORIZONTAL V2 – base */
-v-live cv-live-wrap {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-}
 
-v-live cv-live {
-  width: 100%;
-  aspect-ratio: 115 / 60;
-  height: auto;
-  max-height: 64vh;   /* regla general */
+/* FULL COURT HORIZONTAL V2 */
+#v-live .live-court-card{padding:4px 10px 8px;margin-top:-10px}
+#v-live .court-topbar{
+  display:grid;
+  grid-template-columns: 1fr auto auto;
+  gap:8px;
+  align-items:center;
+  margin-bottom:6px;
 }
-
-/* iPad horizontal: un poco menos, pero no diminuta */
-@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
-  v-live cv-live {
-    max-height: 60vh;  /* en vez de 50vh */
+#v-live .court-status{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  align-items:center;
+}
+#v-live .court-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border:1px solid var(--bd);
+  background:rgba(255,255,255,.04);
+  border-radius:999px;
+  font-size:10px;
+  color:var(--mu);
+}
+#v-live .court-chip strong{color:var(--t);font-weight:700}
+#v-live #cv-live-wrap{
+  width:100%;
+  max-width:none;
+  margin:0;
+}
+#v-live #cv-live{
+  width:100%;
+  aspect-ratio: 120 / 60;
+  height:auto;
+  max-height:58vh; /* AJUSTE: reducir altura máxima de pista para mejorar visibilidad de botones en iPad */
+}
+/* AJUSTE: reducir altura máxima de pista para mejorar visibilidad de botones en iPad */
+@media (min-width:768px) and (max-width:1180px) and (orientation:landscape){
+  #v-live #cv-live{
+    max-height:50vh;
   }
 }
-
-/* Opcional: en escritorio muy grande podrías incluso subirla un poco más
-@media (min-width: 1200px) {
-  v-live cv-live {
-    max-height: 68vh;
+#v-live .live-court-card{overflow:hidden}
+@media (min-width:980px){
+  #v-live.live-pro.on{
+    grid-template-columns:200px minmax(0, 1fr) 155px;
+    gap:10px;
   }
 }
-*/
+@media (min-width:980px){
+  #v-live.live-pro.on{
+    grid-template-columns:220px minmax(0, 1fr) 170px;
+    gap:8px;
+  }
+  #v-live .live-actions-card{grid-column:1;grid-row:2 / span 2}
+  #v-live .live-court-card{grid-column:2;grid-row:2}
+  #v-live .live-players-card{grid-column:3;grid-row:2}
+  #v-live .live-detail{grid-column:2 / 4;grid-row:3}
+}
+
 
 /* COURT HEADER PRO */
 #v-live .court-topbar-pro{
@@ -1628,130 +1675,107 @@ v-live cv-live {
 /* SYNC STATUS */
 .sync-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:3px;}
 
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+/* ─────────────────────────────────────────────────────────────────
+   AJUSTE: iPad landscape — liberar espacio para jugadores y botones
+   Aplica a cualquier pantalla ≥980px en horizontal (iPad todas las
+   generaciones en landscape). Sobreescribe los bloques anteriores.
+───────────────────────────────────────────────────────────────── */
+@media (min-width:980px) and (orientation:landscape){
 
-
-/* ELIMINADO: layout antiguo de 3 columnas para Live */
-
-
-
-
-/* LIMPIEZA LIVE: dejamos solo el layout final de 2 columnas para iPad */
-/* ELIMINADO: layout antiguo de 3 columnas para Live */
-/* LIVE iPad: pasar a 2 columnas (acciones + pista) */
-/* LIVE iPad: mover jugadores/quinteto abajo */
-/* LIVE iPad: compactar franja superior y optimizar pista */
-@media (min-width:980px){
-  #v-live.live-pro.on{
-    grid-template-columns:220px minmax(0,1fr);
-    grid-template-rows:auto auto auto auto;
-    gap:6px;
-    align-content:start;
-    align-items:start;
-    padding-top:0;
-  }
-
-  #v-live .live-score{
-    grid-column:1 / -1;
-    grid-row:1;
-    margin-bottom:0 !important;
-  }
-  #v-live > .card:first-child{
-    margin-bottom:2px !important;
-    padding-top:4px;
-    padding-bottom:4px;
-  }
-  #v-live > .card:first-child .sr{margin-bottom:1px;}
-  #v-live > .card:first-child #qinfo{margin-bottom:2px !important;}
-  #v-live > .card:first-child .bonus-bar{margin-top:1px;}
-  #v-live > .card:first-child #bonus-alert{margin-top:2px;}
-
-  /* AJUSTE LIVE: evitar solape de acciones y log para que rebotes/defensa sigan visibles */
-  #v-live .live-actions-card{
-    grid-column:1;
-    grid-row:2;
-    margin-bottom:0;
-    padding:8px 10px;
-  }
-
-  #v-live .live-court-card{
-    grid-column:2;
-    grid-row:2;
-    margin-top:0;
-    margin-bottom:0;
-    padding:3px 8px 6px;
-  }
-
-  #v-live .live-detail{
-    grid-column:2;
-    grid-row:3;
-    margin-bottom:0;
-  }
-
-  #v-live .live-log-card{
-    grid-column:1;
-    grid-row:3;
-    margin-bottom:0;
-  }
-
-  #v-live .live-actions-card .ct{margin-bottom:6px;}
-  #v-live .live-actions-card .ss{margin-bottom:8px;}
-  #v-live .live-actions-card .ss:last-child{margin-bottom:0;}
-  #v-live .live-actions-card .ss-t{font-size:10px;margin-bottom:5px;}
-  #v-live .live-actions-card .sb-row{gap:4px;}
-  #v-live .live-actions-card .sb{
-    min-height:34px;
-    padding:6px 8px;
-    font-size:11px;
-    line-height:1.05;
-  }
-  #v-live .live-log-card #alog{max-height:120px;overflow:auto;}
-
-  #v-live .live-players-card{
-    grid-column:1 / -1;
-    grid-row:4;
-    margin-top:0;
-    margin-bottom:0;
-  }
-
-  #v-live .court-topbar-pro{
-    gap:6px;
-    margin-bottom:4px;
-    grid-template-columns:minmax(0,1.18fr) minmax(0,.9fr) auto;
-  }
-  #v-live .court-scoreband{
-    min-height:52px;
-    padding:4px 8px;
-    gap:6px;
-  }
-  #v-live .court-teamscore{font-size:28px;}
-  #v-live .court-midline{margin-bottom:2px;}
-  #v-live .court-qinfo{font-size:11px;line-height:1.1;}
-  #v-live .court-chip{
-    padding:4px 8px;
-    font-size:9px;
-    gap:5px;
-  }
-  #v-live .court-actions-top{gap:4px;}
-  #v-live .court-actions-top .btn-s{
-    padding:4px 8px;
-    font-size:9px;
-  }
-
-  #v-live #cv-live-wrap{
-    width:100%;
-    max-width:none;
-    margin:0;
-  }
+  /* 1. Court SVG: en landscape el aspect-ratio 2:1 ya limita la altura
+        naturalmente según el ancho de columna. Usamos 52vh como techo
+        para que en iPads grandes no se dispare, sin encoger en mini. */
   #v-live #cv-live{
-    width:100%;
-    aspect-ratio:115 / 60;
-    height:auto;
-    max-height:64vh;
+    max-height:52vh;
+  }
+
+  /* 2. Court card: sin padding extra arriba, negativo para compensar gap */
+  #v-live .live-court-card{
+    padding:0px 8px 4px;
+    margin-top:-8px;
+  }
+
+  /* 3. Topbar del court: reducir espacio bajo el marcador */
+  #v-live .court-topbar-pro{
+    margin-bottom:4px;
+  }
+
+  /* 4. Scoreband más compacta */
+  #v-live .court-scoreband{
+    min-height:48px;
+    padding:4px 8px;
+  }
+
+  /* 5. Marcador: tamaño reducido pero legible */
+  #v-live .court-teamscore{
+    font-size:26px;
+  }
+
+  /* 6. Grid: acciones algo más estrecho, pista recibe más 1fr,
+        jugadores con ancho fijo generoso para ver dorsales */
+  #v-live.live-pro.on{
+    grid-template-columns:175px minmax(0,1fr) 200px;
+    gap:6px;
+  }
+
+  /* 7. Tarjetas de jugador más compactas */
+  #v-live .live-players-card .pc{
+    min-height:58px;
+    padding:6px 8px 6px 10px;
+  }
+
+  /* 8. Sub-pill (dorsal) ligeramente más pequeña */
+  #v-live .live-players-card .sub-pill{
+    min-width:34px;
+    height:34px;
+    font-size:17px;
+  }
+
+  /* 9. Nombre de jugador */
+  #v-live .live-players-card .pc-n{
+    font-size:11px;
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────
+   AJUSTE: iPad portrait — reducir pista para ver jugadores en pantalla
+   En portrait min-width:980 NO se activa (768px < 980), así que usamos
+   un bloque específico por ancho ≤ 979px.
+───────────────────────────────────────────────────────────────── */
+@media (max-width:979px) and (orientation:portrait){
+
+  /* La pista en portrait ocupa el ancho completo → aspect-ratio 2:1
+     la hace muy alta. Limitamos con max-height para que queden jugadores
+     visibles sin scroll. */
+  #v-live #cv-live{
+    max-height:32vh;
+  }
+
+  /* Scoreband compacta en portrait también */
+  #v-live .court-scoreband{
+    min-height:50px;
+    padding:5px 8px;
+  }
+
+  /* Marcador legible pero sin desperdiciar altura */
+  #v-live .court-teamscore{
+    font-size:28px;
+  }
+
+  /* Topbar menos margen inferior */
+  #v-live .court-topbar-pro{
+    margin-bottom:5px;
+  }
+
+  /* Court card sin padding superior sobrante */
+  #v-live .live-court-card{
+    padding:2px 8px 4px;
+  }
+}
+/* ─────────────────────────────────────────────────────────────── */
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 </style>
 </head>
 <body>
@@ -2169,56 +2193,50 @@ v-live cv-live {
     </div>
   </div>
 
-<!-- Stat buttons -->
-<div class="card live-actions-card">
-  <div class="ct">Registrar — <span id="spl" style="color:var(--mu)">selecciona jugador</span></div>
-
-  <div class="ss">
-    <div class="ss-t" style="color:var(--play);letter-spacing:1.5px">⬡ PLAYMAKING</div>
-    <div class="sb-row">
-      <button class="sb play" onclick="rs('PT')">PAINT TOUCH</button>
-      <button class="sb play" onclick="rs('PT8')">PT &gt;8"</button>
-      <button class="sb play" onclick="rs('DHO')">DHO</button>
-      <button class="sb play" onclick="rs('STA')">STAMPEDE</button>
-      <button class="sb play" onclick="rs('INV')">INVERSIÓN</button>
+  <!-- Stat buttons -->
+  <div class="card live-actions-card">
+    <div class="ct">Registrar — <span id="spl" style="color:var(--mu)">selecciona jugador</span></div>
+    <div class="ss">
+      <div class="ss-t">Tiro</div>
+      <div class="sb-row">
+        <button class="sb" onclick="rs('T2+')">+2 ✓</button>
+        <button class="sb ng" onclick="rs('T2-')">T2 ✗</button>
+        <button class="sb" onclick="rs('T3+')">+3 ✓</button>
+        <button class="sb ng" onclick="rs('T3-')">T3 ✗</button>
+        <button class="sb" onclick="rs('TL+')">+1 TL</button>
+        <button class="sb ng" onclick="rs('TL-')">TL ✗</button>
+      </div>
     </div>
-  </div>
-
-  <div class="ss">
-    <div class="ss-t" style="color:var(--fin);letter-spacing:1.5px">⬡ FINISHING</div>
-    <div class="sb-row">
-      <button class="sb fin" onclick="rs('LAR')">LAROCHE</button>
-      <button class="sb fin" onclick="rs('EPT')">EXTRAPASS+TIRO</button>
-      <button class="sb fin" onclick="rs('RPT')">REEMPLAZO+TIRO</button>
+    <div class="ss">
+      <div class="ss-t">Rebote / Defensa</div>
+      <div class="sb-row">
+        <button class="sb" onclick="rs('RO')">Reb. Ofensivo</button>
+        <button class="sb" onclick="rs('RD')">Reb. Defensivo</button>
+        <button class="sb" onclick="rs('ROB')">Robo</button>
+        <button class="sb" onclick="rs('TAP')">Tapón</button>
+        <button class="sb ng" onclick="rs('FAV')">Falta</button>
+        <button class="sb ng" onclick="rs('PER')">Pérdida</button>
+        <button class="sb" onclick="rs('AST')">Asistencia</button>
+      </div>
     </div>
-  </div>
-</div>
-
-<div class="card live-actions-secondary">
-  <div class="ss">
-    <div class="ss-t">Tiro</div>
-    <div class="sb-row">
-      <button class="sb" onclick="rs('T2+')">+2 ✓</button>
-      <button class="sb ng" onclick="rs('T2-')">T2 ✗</button>
-      <button class="sb" onclick="rs('T3+')">+3 ✓</button>
-      <button class="sb ng" onclick="rs('T3-')">T3 ✗</button>
-      <button class="sb" onclick="rs('TL+')">+1 TL</button>
-      <button class="sb ng" onclick="rs('TL-')">TL ✗</button>
+    <div class="ss">
+      <div class="ss-t" style="color:var(--play);letter-spacing:1.5px">⬡ PLAYMAKING</div>
+      <div class="sb-row">
+        <button class="sb play" onclick="rs('PT')">PAINT TOUCH</button>
+        <button class="sb play" onclick="rs('PT8')">PT &gt;8"</button>
+        <button class="sb play" onclick="rs('DHO')">DHO</button>
+        <button class="sb play" onclick="rs('STA')">STAMPEDE</button>
+        <button class="sb play" onclick="rs('INV')">INVERSIÓN</button>
+      </div>
     </div>
-  </div>
-
-  <div class="ss">
-    <div class="ss-t">Rebote / Defensa</div>
-    <div class="sb-row">
-      <button class="sb" onclick="rs('RO')">Reb. Ofensivo</button>
-      <button class="sb" onclick="rs('RD')">Reb. Defensivo</button>
-      <button class="sb" onclick="rs('ROB')">Robo</button>
-      <button class="sb" onclick="rs('TAP')">Tapón</button>
-      <button class="sb ng" onclick="rs('FAV')">Falta</button>
-      <button class="sb ng" onclick="rs('PER')">Pérdida</button>
-      <button class="sb" onclick="rs('AST')">Asistencia</button>
+    <div class="ss">
+      <div class="ss-t" style="color:var(--fin);letter-spacing:1.5px">⬡ FINISHING</div>
+      <div class="sb-row">
+        <button class="sb fin" onclick="rs('LAR')">LAROCHE</button>
+        <button class="sb fin" onclick="rs('EPT')">EXTRAPASS+TIRO</button>
+        <button class="sb fin" onclick="rs('RPT')">REEMPLAZO+TIRO</button>
+      </div>
     </div>
-  </div>
   </div>
 
   <!-- Log -->

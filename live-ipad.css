@@ -1,4 +1,4 @@
-@media (min-width: 980px) {
+@media (min-width: 768px) {
   #v-live.live-pro.on {
     display: grid;
     grid-template-columns: 160px minmax(0, 1fr) 140px;

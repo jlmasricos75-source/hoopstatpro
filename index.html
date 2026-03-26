@@ -1440,49 +1440,35 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
   #v-live .live-actions-card .sb{flex:1 1 calc(33.33% - 4px)}
 }
 
-/* FULL COURT HORIZONTAL V2 */
-#v-live .court-topbar{
-  display:grid;
-  grid-template-columns: 1fr auto auto;
-  gap:8px;
-  align-items:center;
-  margin-bottom:6px;
+/* FULL COURT HORIZONTAL V2 – base */
+v-live cv-live-wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
-#v-live .court-status{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  align-items:center;
+
+v-live cv-live {
+  width: 100%;
+  aspect-ratio: 115 / 60;
+  height: auto;
+  max-height: 64vh;   /* regla general */
 }
-#v-live .court-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 10px;
-  border:1px solid var(--bd);
-  background:rgba(255,255,255,.04);
-  border-radius:999px;
-  font-size:10px;
-  color:var(--mu);
-}
-#v-live .court-chip strong{color:var(--t);font-weight:700}
-#v-live #cv-live-wrap{
-  width:100%;
-  max-width:none;
-  margin:0;
-}
-#v-live #cv-live{
-  width:100%;
-  aspect-ratio: 120 / 60;
-  height:auto;
-  max-height:58vh; /* AJUSTE: reducir altura máxima de pista para mejorar visibilidad de botones en iPad */
-}
-/* AJUSTE: reducir altura máxima de pista para mejorar visibilidad de botones en iPad */
-@media (min-width:768px) and (max-width:1180px) and (orientation:landscape){
-  #v-live #cv-live{
-    max-height:50vh;
+
+/* iPad horizontal: un poco menos, pero no diminuta */
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
+  v-live cv-live {
+    max-height: 60vh;  /* en vez de 50vh */
   }
 }
+
+/* Opcional: en escritorio muy grande podrías incluso subirla un poco más
+@media (min-width: 1200px) {
+  v-live cv-live {
+    max-height: 68vh;
+  }
+}
+*/
+
 /* COURT HEADER PRO */
 #v-live .court-topbar-pro{
   display:grid;

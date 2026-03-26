@@ -1390,7 +1390,7 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 #v-live.live-pro{
   display:none;
 }
-/* AJUSTE ESTÉTICO: subir pista en Live para aprovechar espacio (solo layout, sin tocar lógica) */
+/* LIMPIEZA LIVE: dejamos solo la base visual común y el layout final se define más abajo en la media query de iPad */
 #v-live.live-pro.on{
   display:grid;
   gap:6px;
@@ -1399,11 +1399,10 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 }
 #v-live .live-score{grid-column:1/-1;margin-bottom:0}
 #v-live .live-actions-card{margin-bottom:0}
-#v-live .live-court-card{margin-bottom:0}
+#v-live .live-court-card{margin-bottom:0;padding:10px 10px 8px;overflow:hidden}
 #v-live .live-players-card{margin-bottom:0}
-#v-live .live-log-card{grid-column:1/-1;margin-bottom:0}
-#v-live .live-detail{grid-column:1/-1;margin-bottom:0}
-#v-live .live-court-card{padding:10px 10px 8px}
+#v-live .live-log-card{margin-bottom:0}
+#v-live .live-detail{margin-bottom:0}
 #v-live .live-actions-card .sb{
   padding:5px 8px;
   font-size:11px;
@@ -1436,25 +1435,11 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 #v-live > .card:first-child #qinfo{margin-bottom:4px !important}
 #v-live > .card:first-child .bonus-bar{margin-top:2px}
 #v-live > .card:first-child #bonus-alert{margin-top:4px}
-@media (min-width: 980px){
-  #v-live.live-pro.on{
-    grid-template-columns:240px minmax(0, 1fr) 190px;
-    align-items:start;
-  }
-  #v-live .live-score{grid-column:1/-1}
-  #v-live .live-actions-card{grid-column:1;grid-row:2 / span 2}
-  #v-live .live-court-card{grid-column:2;grid-row:2}
-  #v-live .live-players-card{grid-column:3;grid-row:2}
-  #v-live .live-detail{grid-column:2 / 4;grid-row:3}
-  #v-live .live-log-card{grid-column:1 / -1;grid-row:4}
-}
 @media (max-width: 979px){
   #v-live .live-actions-card .sb{flex:1 1 calc(33.33% - 4px)}
 }
 
-
 /* FULL COURT HORIZONTAL V2 */
-#v-live .live-court-card{padding:4px 10px 8px;margin-top:-10px}
 #v-live .court-topbar{
   display:grid;
   grid-template-columns: 1fr auto auto;
@@ -1497,25 +1482,6 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
     max-height:50vh;
   }
 }
-#v-live .live-court-card{overflow:hidden}
-@media (min-width:980px){
-  #v-live.live-pro.on{
-    grid-template-columns:200px minmax(0, 1fr) 155px;
-    gap:10px;
-  }
-}
-@media (min-width:980px){
-  #v-live.live-pro.on{
-    grid-template-columns:220px minmax(0, 1fr) 170px;
-    gap:8px;
-  }
-  #v-live .live-actions-card{grid-column:1;grid-row:2 / span 2}
-  #v-live .live-court-card{grid-column:2;grid-row:2}
-  #v-live .live-players-card{grid-column:3;grid-row:2}
-  #v-live .live-detail{grid-column:2 / 4;grid-row:3}
-}
-
-
 /* COURT HEADER PRO */
 #v-live .court-topbar-pro{
   display:grid;
@@ -1677,6 +1643,113 @@ select.inp{-webkit-appearance:none;appearance:none;background-image:url("data:im
 
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+
+/* ELIMINADO: layout antiguo de 3 columnas para Live */
+
+
+
+
+/* LIMPIEZA LIVE: dejamos solo el layout final de 2 columnas para iPad */
+/* ELIMINADO: layout antiguo de 3 columnas para Live */
+/* LIVE iPad: pasar a 2 columnas (acciones + pista) */
+/* LIVE iPad: mover jugadores/quinteto abajo */
+/* LIVE iPad: compactar franja superior y optimizar pista */
+@media (min-width:980px){
+  #v-live.live-pro.on{
+    grid-template-columns:220px minmax(0,1fr);
+    grid-template-rows:auto auto auto auto;
+    gap:6px;
+    align-content:start;
+    align-items:start;
+    padding-top:0;
+  }
+
+  #v-live .live-score{
+    grid-column:1 / -1;
+    grid-row:1;
+    margin-bottom:0 !important;
+  }
+  #v-live > .card:first-child{
+    margin-bottom:2px !important;
+    padding-top:4px;
+    padding-bottom:4px;
+  }
+  #v-live > .card:first-child .sr{margin-bottom:1px;}
+  #v-live > .card:first-child #qinfo{margin-bottom:2px !important;}
+  #v-live > .card:first-child .bonus-bar{margin-top:1px;}
+  #v-live > .card:first-child #bonus-alert{margin-top:2px;}
+
+  #v-live .live-actions-card{
+    grid-column:1;
+    grid-row:2 / span 2;
+    margin-bottom:0;
+  }
+
+  #v-live .live-court-card{
+    grid-column:2;
+    grid-row:2;
+    margin-top:0;
+    margin-bottom:0;
+    padding:3px 8px 6px;
+  }
+
+  #v-live .live-detail{
+    grid-column:2;
+    grid-row:3;
+    margin-bottom:0;
+  }
+
+  #v-live .live-log-card{
+    grid-column:1;
+    grid-row:3;
+    margin-bottom:0;
+  }
+
+  #v-live .live-players-card{
+    grid-column:1 / -1;
+    grid-row:4;
+    margin-top:0;
+    margin-bottom:0;
+  }
+
+  #v-live .court-topbar-pro{
+    gap:6px;
+    margin-bottom:4px;
+    grid-template-columns:minmax(0,1.18fr) minmax(0,.9fr) auto;
+  }
+  #v-live .court-scoreband{
+    min-height:52px;
+    padding:4px 8px;
+    gap:6px;
+  }
+  #v-live .court-teamscore{font-size:28px;}
+  #v-live .court-midline{margin-bottom:2px;}
+  #v-live .court-qinfo{font-size:11px;line-height:1.1;}
+  #v-live .court-chip{
+    padding:4px 8px;
+    font-size:9px;
+    gap:5px;
+  }
+  #v-live .court-actions-top{gap:4px;}
+  #v-live .court-actions-top .btn-s{
+    padding:4px 8px;
+    font-size:9px;
+  }
+
+  #v-live #cv-live-wrap{
+    width:100%;
+    max-width:none;
+    margin:0;
+  }
+  #v-live #cv-live{
+    width:100%;
+    aspect-ratio:115 / 60;
+    height:auto;
+    max-height:64vh;
+  }
+}
+
 </style>
 </head>
 <body>

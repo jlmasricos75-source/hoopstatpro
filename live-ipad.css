@@ -50,9 +50,9 @@
     grid-row: 4;
   }
 
-  #v-live #cv-live {
+    #v-live #cv-live {
     width: 100%;
     aspect-ratio: 115 / 60;
-    max-height: 60vh;
-  }
-}
+    max-height: 80vh; /* más grande en escritorio/iPad horizontal */
+   }
+} 
